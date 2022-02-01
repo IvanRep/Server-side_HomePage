@@ -1,0 +1,4 @@
+<main [ngClass]="{'reversed':reversed, 'nofilters':!filters}">
+    <button (click)="filter(folderButton,1)" #folderButton>Carpetas</button>
+    <button (click)="filter(linkButton,2)" #linkButton>Enlaces</button>
+</main>

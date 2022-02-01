@@ -1,1 +1,278 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --dark-color: rgb(32, 33, 36);
+    --icons-shadow-color: rgb(32, 33, 36,90%);
+    --dark-transparent-color: rgba(32, 33, 36, 10%);
+    --main-color: white; 
+    --text-color: rgb(118, 120, 126);
+    --separator-color: rgb(232, 97, 97);
+    --danger-color: #f53c3c;
+    --border-icons-color: rgb(64, 75, 222);
+    --selectors-color: rgb(255, 171, 171);
+
+}
+@font-face {
+    font-family: Tahoma_Regular;
+    src: url("assets/Tahoma-Regular-font.ttf");
+}
+* {
+    box-sizing: border-box;
+    font-family: Tahoma_Regular;
+    user-select: none;
+}
+body, app-root {
+    overflow: hidden;
+    min-height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
+    margin: 0%;
+}
+app-root {
+    display: grid;
+    grid-template-rows: .3fr 1fr 2fr 2fr;
+    grid-template-columns: .1fr 2fr 2fr 2fr;
+}
+button, input[type=button], input[type=submit], input[type=reset] {
+    cursor: pointer;
+}
+
+/* POP-UP CSS */
+
+.pop-up-container {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: var(--dark-transparent-color);
+    z-index: 99;
+}
+
+.pop-up-container * {
+    box-sizing: border-box;
+}
+.pop-up-container>div {
+    
+    display: grid;
+    /*grid-template-columns: 9vw 9vw;
+    grid-template-rows: 11vh 15vh 10vh;*/
+    grid-template-areas: "head head"
+                         "body body"
+                         "body body"
+                         "body body"
+                         "confirm cancel";
+    padding: 2vh 1vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 20vw;
+    height: 40vh;
+    border-radius: 1vmin;
+    background-color: var(--main-color);
+    box-shadow: .25vw .5vh 2px 1px var(--dark-transparent-color);
+    z-index: 4;
+}
+
+.pop-up-container>div>div:only-of-type {
+    grid-row-start: 1 !important;
+    grid-row-end: 3 !important;
+}
+.pop-up-container .title {
+    grid-area: head;
+    text-align: center;
+    font-size: calc(1rem + 1vmin);
+    font-weight: bold;
+}
+.pop-up-container .body {
+    grid-area: body;
+    display: flex;
+    text-align: center;
+    place-self: center;
+    font-size: calc(1rem + .5vmin);
+}
+
+.pop-up-container input {
+    position: absolute;
+    left: 20%;
+    justify-self: center;
+    margin: auto;
+    width: 60%;
+    border: 1px solid var(--dark-color);
+    border-radius: 1vmin;
+    outline: none;
+    padding: 1vh;
+    background: none;
+    z-index: 1;
+    font-size: calc(.5rem + .5vmin);
+
+}
+.pop-up-container input:nth-of-type(1) {
+    top: 2.5vh;
+}
+.pop-up-container input:nth-of-type(2) {
+    top: 10.5vh;
+}
+
+.pop-up-container input:only-of-type {
+    top: 2.5vh;
+}
+.pop-up-container label {
+    position: absolute;
+    left: 20%;
+    color: var(--dark-color);
+    background: var(--main-color);
+    font-size: calc(.5rem + 1vmin);
+    padding: 0 1vmin;
+    margin-bottom: .25rem;
+    transition: .3s;
+}
+.pop-up-container label:nth-of-type(1) {
+    top: 3.5vh;
+}
+.pop-up-container label:nth-of-type(2) {
+    top: 11.5vh;
+}
+
+.pop-up-container label:only-of-type {
+    top: 3.5vh;
+}
+/* Movimiento hacia arriba label*/
+.pop-up-container input:focus + label {
+    transform: translateY(-100%);
+    font-size: calc(.5rem + .5vmin);
+    font-weight: 700;
+    z-index: 10;
+}
+
+/* Si hay algo escrito se mantiene la label */
+.pop-up-container input:not(:placeholder-shown)+ label {
+    transform: translateY(-100%);
+    font-size: calc(.5rem + .5vmin);
+    font-weight: 700;
+    z-index: 10;
+}
+
+.pop-up-container button {
+    outline: none;
+    box-sizing: border-box;
+    padding: .5vmin;
+    width: 7vw;
+    height: 5;
+    border-radius: 1vmin;
+    font-size: calc(.5rem + .75vmin);
+    place-self: center;
+
+    transition: 1s ease-out;
+}
+div.pop-up-container button:only-of-type {
+    grid-column-start: 1 !important;
+    grid-column-end: 3 !important;
+}
+div.pop-up-container>div.pop-up>button:first-of-type {
+    grid-area: confirm;
+    color: var(--main-color);
+    background-color: var(--dark-color);
+    border-color: var(--dark-color);
+}
+
+div.pop-up-container>div.pop-up>button:last-of-type {
+    grid-area: cancel;
+    color: var(--dark-color);
+    background-color: var(--main-color);
+}
+
+.pop-up-container button:hover {
+
+    transform: scale(1.3);
+}
+
+.pop-up-container .alert-options {
+    position: absolute;
+    top: -5vh;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 2px 2px 2px 1px black;
+
+}
+
+.pop-up-container .alert-options button {
+    width: 50%;
+    background-color: var(--main-color);
+    color: var(--dark-color);
+    border: none;
+    border-radius: 0px;
+    border-right: solid 1px var(--dark-color);
+    font-size: calc(.5rem + .5vmin);
+    padding: 1vmin;
+}
+.pop-up-container .alert-options button:hover {
+    transform: none;
+}
+.pop-up-container .alert-options button:last-of-type {
+    border: none;
+}
+.pop-up-container .alert-options button.selected-option {
+    background-color: var(--dark-color);
+    color: var(--main-color);
+}
+
+.pop-up-container .pop-up .body .newLinkBody input {
+    left: 11%;
+    width: 35%;
+}
+.pop-up-container .pop-up .body .newLinkBody label {
+    left: 11%;
+}
+
+.pop-up-container input:nth-of-type(3) {
+    visibility: hidden;
+    opacity: 0;
+    top: 6.5vh;
+}
+.pop-up-container input:nth-of-type(3).show, .pop-up-container input:nth-of-type(3).show + label {
+    visibility: visible;
+    opacity: 1;
+    transition: .25s;
+}
+
+.pop-up-container label:nth-of-type(3) {
+    visibility: hidden;
+    opacity: 0;
+    top: 7.5vh;
+}
+.pop-up-container input:nth-of-type(1).hide, .pop-up-container input:nth-of-type(1).hide + label {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(+4vh);
+
+    transition: .25s;
+} 
+.pop-up-container input:nth-of-type(2).hide, .pop-up-container input:nth-of-type(2).hide + label {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4vh);
+    transition: .25s;
+} 
+
+.pop-up-container .pop-up .body .newLinkBody img{
+    position: absolute;
+    right: 2vw;
+    top: 1.5vh;
+    width: calc(1rem + 8vmin + 2vw);
+    height: calc(1rem + 8vmin + 2vw);
+    padding: 1vmin;
+    border: solid 1px var(--dark-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+

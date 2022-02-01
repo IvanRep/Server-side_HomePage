@@ -1,0 +1,48 @@
+button {
+    width: calc(1rem + 4vw);
+    height: calc(1rem + 4vh);
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+
+    transition: 2s;
+}
+
+button.selectEngine {
+    position: absolute;
+    top: 12vh;
+    left: 20vw;
+    width: calc(1rem + 4vw);
+    height: calc(1rem + 4vh);
+    visibility: hidden;
+    opacity: 0;
+
+    transform: translateX(0vw);
+
+    transition: 1s;
+}
+button.selectEngine img {
+    width: calc(1rem + 2vw);
+    height: calc(1rem 2vw);
+    image-rendering: crisp-edges;
+}
+
+button.selectEngine.open {
+    height: calc(1rem + 4vw);
+    border-radius: 100%;
+    transform: translateX(-5vw);
+    visibility: visible;
+    opacity: 1;
+}
+
+button.selectEngine.open:nth-child(2) {
+    transform: translateX(-5vw) translateY(-2vh);
+    z-index: 0;
+}
+button.selectEngine.open:nth-child(3) {
+    transform: translateX(-9vw) translateY(-2vh);
+    z-index: 1;
+}
+button.selectEngine.open:nth-child(4) {
+    transform: translateX(-13vw) translateY(-2vh);
+    z-index: 2;
+}

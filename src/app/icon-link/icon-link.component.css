@@ -1,0 +1,255 @@
+main {
+    display: flex;
+    height: calc(1rem + 22vh);
+}
+
+.link, .carpeta {
+    width: calc(1rem + 12vw);
+    height: calc(1rem + 22vh);
+    border: solid .5vmin var(--dark-color);
+    border-radius: 20px;
+    background: var(--main-color);
+    overflow: hidden !important;
+
+    text-align: center;
+    color: var(--dark-color);
+    cursor: pointer;
+}
+.link {
+    display: grid;
+    grid-template-areas: 'img img'
+                         'name icon';
+    padding: 1vmin;
+}
+.link img {
+    grid-area: img;
+    place-self: center;
+    padding: 1vmin;
+    width: calc(1rem + 8vmin + 2vw);
+    height: calc(1rem + 8vmin + 2vw);
+    image-rendering: optimizeQuality;
+}
+.link span {
+    grid-area: name;
+    place-self: center;
+    width: 8vw;
+    font-size: calc(1rem + .25vw + .25vh);
+    font-weight: bold;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.link div {
+    grid-area: icon;
+    place-self: center;
+    display: flex;
+    width: calc(.2rem + 4vmin + 1vw);
+    height: calc(.2rem + 4vmin + 1vw);
+    padding: .5vmin;
+    border: solid 1px var(--dark-color);
+    border-radius: 100%;
+    padding: 10%;
+}
+.link svg {
+    align-self: center;
+    margin: auto;
+    width: calc(.2rem + 1vh + 1vw);
+    height: calc(.2rem + 1vh + 1vw);
+}
+.link:hover svg {
+    fill: var(--separator-color);
+}
+.carpeta {
+    display: grid;
+    grid-template-areas: "1 2 3"
+                         "4 5 6"
+                         "desp desp desp";
+}
+.carpeta img {
+    width: calc(.5rem + 3vw);
+    height: calc(.5rem + 5.3vh);
+    padding: 5%;
+    border-radius: 10px;
+    border: none;
+    place-self: center;
+}
+.carpeta div {
+    grid-area: desp;
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+    height: 6vh;
+    padding: .5vmin;
+    border-top: solid .2vmin var(--dark-color);
+}
+.carpeta svg {
+    width: calc(1.8rem + .5vw);
+    height: calc(1.8rem + .5vw);
+    place-self: center;
+}
+.carpeta.showLinks #path2, .carpeta.showLinks, .carpeta.showLinks div  {
+    border-color: var(--separator-color);
+    
+    stroke: var(--separator-color);
+    fill: var(--separator-color);
+}
+a {
+    text-decoration: none;
+    color: var(--dark-color);
+    z-index: 2;
+}
+a.isEditMode {
+    pointer-events: none !important;
+    cursor: normal;
+}
+
+button#new {
+    transform: translateX(-10vw) scale(0);
+    border-radius: 100%;
+    font-weight: bold;
+    margin: auto;
+    color: var(--dark-color);
+    border-color: var(--dark-color);
+    z-index: 1;
+    transition: .5s, z-index .55s;
+    
+    
+}
+button#new.isEditMode {
+    transform: translateX(0vw) scale(1);
+}
+button#delete {
+    display: flex;
+    position: sticky;
+    visibility: hidden;
+    opacity: 0;
+    border-radius: 100%;
+    background-color: var(--main-color);
+    border: solid .5vmin var(--dark-color);
+    z-index: 4;
+    width: 5vh;
+    height: 5vh;
+    justify-content: center;
+    padding: 0;
+    transform: translateX(-1vw) translateY(-1vh);
+
+    transition: .5s;
+}
+button#delete svg {
+    width: 2vh;
+    height: 2vh;
+    place-self: center;
+    stroke: black;
+    stroke-width: 3px;
+}
+button#delete:hover svg {
+    fill: var(--danger-color);
+    stroke: var(--danger-color);
+}
+
+button.isEditMode {
+    visibility: visible !important;
+    opacity: 1 !important;
+
+}
+
+.folder-links {
+    position: absolute;
+    display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: max-content max-content max-content max-content max-content max-content;
+    row-gap: 1vh;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(0) scaleX(-.25);
+    transition: opacity .2s .1s, transform .5s, visibility .5s;
+}
+.folder-links.showLinks {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(calc(1.25rem + 22vh));
+    transition: opacity .2s .1s, transform .5s visibility 0s;
+    
+}
+.folderLink {
+    display: flex;
+    flex-direction: row;
+    width: calc(1rem + 12vw);
+    height: calc(1rem + 3vh);
+    border: solid .5vmin var(--dark-color);
+    border-radius: 20px;
+    overflow: hidden !important;
+    align-items: center;
+    cursor: pointer;
+}
+.folder-links img {
+    width: calc(.5rem + 3vh + 1vw);
+    height: calc(.5rem + 3vh + 1vw);
+    padding: 1.25vmin;
+
+    border-radius: 10px;
+
+    text-align: center;
+    background: none;
+    font-weight: bold;
+}
+
+.folderLink div {
+    display: inline;
+    color: var(--dark-color);
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+.folderLink>svg {
+    display: none;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: absolute;
+    width: calc(.5rem + 3vh + 1vw);
+    height: calc(.5rem + 3vh + 1vw);
+    padding: 1.25vmin;
+}
+.folderLink.isEditMode:hover>svg {
+    display: inline;
+}
+.folderLink.isEditMode:hover div {
+    display: none;
+}
+
+.folder-links button {
+    padding: 0;
+    border: none;
+    background: none;
+    margin-left: auto;
+}
+.folder-links button svg {
+    width: calc(.5rem + 2vh + 1vw);
+    height: calc(.5rem + 1vh + .5vw);
+}
+.folder-links button:hover svg {
+    fill: var(--danger-color);
+}
+
+.addLink {
+    visibility: hidden;
+    opacity: 0;
+    cursor: pointer;
+}
+.addLink svg {
+    display: block;
+    fill: var(--dark-color);
+    
+    stroke-width: 5px;
+}
+.addLink:hover svg {
+    fill: var(--separator-color);
+}
+.addLink.isEditMode {
+    visibility: visible;
+    opacity: 1;
+}

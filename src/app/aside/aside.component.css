@@ -1,0 +1,98 @@
+main {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 2vmin;
+}
+main.close {
+    padding: 1vmin 0;
+    flex-direction: column-reverse;
+}
+app-filters {
+    place-self: center;
+}
+div.foot {
+    display: flex;
+    margin-top: 2vh;
+    align-items: flex-end;
+    
+}
+div.date {
+    color: var(--main-color);
+    background-color: #333;
+    padding: calc(.5vmin + .5vw);
+    border-radius: 20px;
+    letter-spacing: .1rem;
+    font-size: calc(.5rem + 1vmin);
+}
+button.openAside {
+    color: var(--main-color);
+    font-weight: bold;
+    background: none;
+    margin-left: auto;
+    border: none;
+}
+.openAside svg {
+    width: calc(1vh + 1vw);
+    height: calc(1vh + 1vw);
+    fill: var(--main-color);
+}
+.openAside:hover svg {
+    fill: var(--separator-color);
+}
+
+aside button {
+    margin-left: auto;
+}
+
+.links_wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 95vh;
+    margin: 1vh 0;
+    direction: rtl;
+
+
+    /*Estilos estándar experimentales (Principalmente Firefox)*/
+    scrollbar-color: var(--dark-color);
+    scrollbar-width: thin;
+}
+.links_wrapper button {
+    margin: 0 auto;
+    border: solid .5vmin var(--main-color);
+    border-radius: 20px;
+    background-color: var(--dark-color);
+}
+.links_wrapper button svg {
+    width: calc(2vmin + 1vmax);
+    height: calc(2vmin + 1vmax);
+    fill: var(--main-color);
+}
+.links_wrapper button:hover, .links_wrapper button:hover svg {
+    fill: var(--separator-color);
+    border-color: var(--separator-color);
+}
+.links_wrapper app-list-link {
+    direction: ltr;
+}
+.links_wrapper::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.links_wrapper::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+}
+.links_wrapper::-webkit-scrollbar:vertical {
+    width: .5vw;
+    
+}
+.links_wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--separator-color);
+    border-radius: 20px;
+
+}
+.links_wrapper::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}

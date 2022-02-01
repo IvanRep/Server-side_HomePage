@@ -1,0 +1,74 @@
+button {
+    background-color: var(--dark-color);
+    border-radius: 100%;
+    width: 7vmin;
+    height: 7vmin;
+    place-self: center;
+    margin-bottom: 1vh;
+    padding: 0;
+}
+button:first-of-type {
+    visibility: hidden;
+}
+button svg {
+    fill: var(--main-color);
+    width: 5vmin !important;
+    height: calc(1rem + 3vh);
+}
+main {
+    display: flex;
+    flex-direction: row;
+    column-gap: 3vw;
+    max-width: 80vw;
+    margin: 0 4vw;
+    padding-top: 4vmin;
+    overflow-x: auto;
+    user-select: none;
+    scroll-behavior: smooth;
+    transition: 1s;
+}
+main button {
+    width: calc(1rem + 12vw);
+    height: calc(1rem + 22vh);
+    border: solid .5vmin var(--dark-color);
+    border-radius: 20px;
+    font-size: calc(1rem + 10vmin);
+    background-color: var(--main-color);
+    visibility: visible;
+
+    transition: 1.5s;
+}
+main button:hover {
+    color: var(--main-color);
+    background-color: var(--dark-color);
+}
+main button:active {
+    border-top: none;
+    border-left: none;
+}
+main::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+main.hideScroll::-webkit-scrollbar {
+    display: none;
+}
+main::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+}
+main::-webkit-scrollbar:horizontal {
+    height: 1vmin;
+    
+}
+main::-webkit-scrollbar-thumb {
+    background-color: var(--dark-color);
+    border-radius: 20px;
+
+}
+main::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+main {
+    /*Estilos estándar experimentales (Principalmente Firefox)*/
+    scrollbar-color: var(--dark-color);
+    scrollbar-width: thin;
+}
