@@ -15,7 +15,7 @@ export class LinkService {
   constructor(private http:HttpClient) {}
 
   getApiUrl() {
-    return this.http.get("/settings.json",{responseType:"json"});
+    return this.http.get("settings.json",{responseType:"json"});
   }
 
   
