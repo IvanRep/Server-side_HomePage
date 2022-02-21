@@ -27,21 +27,24 @@ export class AppComponent implements OnInit {
   constructor(private linkService:LinkService) {}
 
   ngOnInit() {
-    this.getUser();
-    this.linkService.getLinks(this.user).subscribe(links => {
-      this.getLinks(links);
+    //Obtengo del fichero settings la url de la api y se la agrego al linkService 
+    this.linkService.getApiUrl().subscribe( (settings:any) => {
+      this.linkService.url = settings.api_url;
 
-      // Si el usuario es el por defecto (no se ha iniciado sesión) o no se han cargado correctamente los links, los intenta cargar desde el almacenamiento local del usuario
-      if (this.user.getId() == 0 || (this.icon_links.length == 0 && this.list_links.length == 0)) {
-        const links  = this.linkService.localLoad(); 
-        if (links) this.getLinks(links);
-      }
+      this.getUser();
+      this.linkService.getLinks(this.user).subscribe(links => {
+        this.getLinks(links);
+
+        // Si el usuario es el por defecto (no se ha iniciado sesión) o no se han cargado correctamente los links, los intenta cargar desde el almacenamiento local del usuario
+        if (this.user.getId() == 0 || (this.icon_links.length == 0 && this.list_links.length == 0)) {
+          const links  = this.linkService.localLoad(); 
+          if (links) this.getLinks(links);
+        }
+      });
     });
 
     //Al cerrarse la página guardo en local los datos de la sesión
     window.addEventListener('unload',() => {this.linkService.localSave(this.list_links,this.icon_links)});
-
-    //
 
   }
 

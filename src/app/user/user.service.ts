@@ -7,9 +7,11 @@ import { User } from './user.model';
 })
 export class UserService {
 
-  private url = "http://192.168.1.56/HomePage/php/users.php";
+  private url:string = "";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.http.get("/settings.json",{responseType:'json'}).subscribe((settings:any) => {this.url = settings.api_url+"/users.php"});
+  }
 
   /* Devuelve el usuario si sus credenciales existen en la base de datos */
   login(user:User) {

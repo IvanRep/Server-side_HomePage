@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Requires to an API to communicate with the database: [HomePage API](https://github.com/IvanRep/HomePage_API)
 
-To indicate the route to the api you have to change the attribute `url` located in `src/app/link/link.service.ts` and the attribute `url` located in `src/app/user/user.service.ts`.
+To indicate the route to the api you have to change the variable `api_url` located in `src/settings.json`.
 
 If the program doesn't have access to the api it can works in local.
 

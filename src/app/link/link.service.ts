@@ -10,9 +10,13 @@ import { Target } from './target.model';
 })
 export class LinkService {
 
-  url = "http://192.168.1.56/HomePage/php";
+  url = "";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {}
+
+  getApiUrl() {
+    return this.http.get("/settings.json",{responseType:"json"});
+  }
 
   
   /* Devuelve todos los links del usuario pasado como parametro */
