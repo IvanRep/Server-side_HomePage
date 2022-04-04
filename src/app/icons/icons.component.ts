@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import calculateVW from '../functions/calculateVW';
 import { IconLinkComponent } from '../icon-link/icon-link.component';
+import { Folder } from '../link/folder.model';
 import { Link } from '../link/link.model';
 
 @Component({
@@ -19,6 +20,7 @@ export class IconsComponent implements OnInit, OnChanges {
   @Output() deleteLinkEmitter = new EventEmitter<HTMLButtonElement>();
 
   foldersOpen:boolean[] = [];
+  selectedFolder!:any; 
   showScroll = true;
   @ViewChildren(IconLinkComponent)
   iconLinkComponent!: QueryList<IconLinkComponent>;
@@ -47,11 +49,10 @@ export class IconsComponent implements OnInit, OnChanges {
     this.showScroll = !options.open;
 
     for (let i = 0; i<this.icon_links.length;i++) {
-      if (i == options.index)
-        this.foldersOpen[i] = options.open;
-      else
-        this.foldersOpen[i] = false;
-
+      if (i == options.index) {
+        options.open ? this.selectedFolder = this.icon_links[i] : this.selectedFolder = null;
+        return;
+      }
     }
 
   }
@@ -64,23 +65,6 @@ export class IconsComponent implements OnInit, OnChanges {
         item.updatePosition();
       }
     });
-  }
-
-  moveScrollLeft(left:HTMLButtonElement, right:HTMLButtonElement) {
-    const main = (<HTMLDivElement>document.querySelector('.icons main'))
-    main.scrollTo(main.scrollLeft-calculateVW(40),0);
-
-    setTimeout(() => {main.scrollLeft == 0 ?  left.style.visibility = 'hidden' : left.style.visibility = 'visible';},500);
-    setTimeout(() => {(main.scrollWidth + main.scrollLeft) / main.scrollWidth == 0 ?  right.style.visibility = 'hidden' : right.style.visibility = 'visible';},500);
-  }
-
-  moveScrollRight(right:HTMLButtonElement, left:HTMLButtonElement) {
-    const main = (<HTMLDivElement>document.querySelector('.icons main'))
-    main.scrollTo(main.scrollLeft+calculateVW(40),0);
-    
-    setTimeout(() => {main.scrollLeft == 0 ?  left.style.visibility = 'hidden' : left.style.visibility = 'visible';},500);
-    setTimeout(() => {(main.scrollWidth + main.scrollLeft) / main.scrollWidth == 0 ?  right.style.visibility = 'hidden' : right.style.visibility = 'visible';},500);
-
   }
 
 }

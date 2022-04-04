@@ -63,11 +63,19 @@ export class IconLinkComponent implements OnInit, OnChanges {
     if (!this.isEditMode) {
       if (event.button == 0) 
         window.location.href = this.link.getUrl();
-      else
-        window.open(this.link.getUrl(),'_blank');
+      else if (event.button == 1) {
+        let actualWindow = document.defaultView;
+        open(this.link.getUrl(),'_blank',"");
+      } else {
+        this.openSettings()
+      }
     } else {
       this.editLinkEmitter.emit([this.link,-1]);
     }
+  }
+
+  openSettings() {
+    alert("Abriendo opciones... :D")
   }
 
   clickFolderLink(event:MouseEvent,link:number) {
@@ -153,6 +161,20 @@ export class IconLinkComponent implements OnInit, OnChanges {
   // Emite un evento para borrar el link
   deleteLink(button:HTMLButtonElement) {
     this.deleteLinkEmitter.emit(button);
+  }
+
+  setDefaultImage(event:Event) {
+    const img = <HTMLImageElement>event.currentTarget
+    if (img.parentElement)
+      img.parentElement.innerHTML = `
+      <div style="
+      font-weight:bolder; 
+      place-self:center; 
+      text-overflow: ellipsis; 
+      overflow: hidden; 
+      width: 130px">
+        ${this.link.name}
+      </div>`;
   }
 
 }

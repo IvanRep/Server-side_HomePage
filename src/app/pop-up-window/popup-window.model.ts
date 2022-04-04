@@ -1,3 +1,5 @@
+import { LinkService } from "../link/link.service";
+
 export class PopUpWindow {
 
     options:any = {
@@ -20,7 +22,7 @@ export class PopUpWindow {
     }
 
     bodySaved = document.createElement('div');
-
+    
     constructor(options:any) {
         this.options.isTitle = options.isTitle ?? true;
         this.options.isBody = options.isBody ?? true;
@@ -169,58 +171,69 @@ export class PopUpWindow {
     }
 
     setNewLinkImage(input:HTMLInputElement,inputIMG:HTMLInputElement, img:HTMLImageElement) {
-        //if (inputIMG.value.trim() == '') {
-            let textUrl:string;
-            !input.value.trim().startsWith('http://') && !input.value.trim().startsWith('https://') ? textUrl = 'http://'+input.value.trim() : textUrl = input.value.trim();
-            
-            this.getImage(textUrl+'/favicon.ico').then( (url) => {
-                img.src = <string>url;
-                inputIMG.value = <string>url;
-            }).catch( (url) => {
-                console.log(url)
-                this.getImage('https://www.google.com/s2/favicons?domain='+input.value).then( (url) => {
-
-                    img.src = <string>url;
-                    inputIMG.value = <string>url;
-                }).catch( (url) => {
-                    img.src = '../assets/enlace.svg';
-                });
-            })
-            
-        //}
+        let textUrl:string;
+        !input.value.trim().startsWith('http://') && !input.value.trim().startsWith('https://') ? textUrl = 'http://'+input.value.trim() : textUrl = input.value.trim();
         
-    }
-    getImage(url:string) {
-        return new Promise(function(resolve, reject){
-            const img = new Image();
-            img.onload = () => {   
-                resolve(url);
-            }
-            img.onerror = (ev) => {
-                
-                reject(url);
-            }
-            
-            img.src = url;
-        })
+        
+        //page?.close();
+        
+        var num = Math.round(1000 * Math.random());
+        var callbackMethodName:string = "cb_" + num;
+
+        var cb = function(data:any) {
+            console.log(document.images)
+        }
+
+        var sc = document.createElement("script");
+        sc.id = "script_" + callbackMethodName;
+        sc.src = textUrl+"?callback=cb";
+        document.body.appendChild(sc);
+        document.getElementById(sc.id)?.remove();
+    
+
+        // const page = window.open(textUrl,'_blank');
+        // page?.document.addEventListener('DOMContentLoaded', (event) => {
+        //     console.log(page.document);
+        //     if (page.document.images.length > 0) {
+        //         img.src = page.document.images[0].src;
+        //     }
+        // });
     }
 
+    // setNewLinkImage(input:HTMLInputElement,inputIMG:HTMLInputElement, img:HTMLImageElement) {
+    //     //if (inputIMG.value.trim() == '') {
+    //         let textUrl:string;
+    //         !input.value.trim().startsWith('http://') && !input.value.trim().startsWith('https://') ? textUrl = 'http://'+input.value.trim() : textUrl = input.value.trim();
+            
+    //         this.getImage(textUrl+'/favicon.ico').then( (url) => {
+    //             img.src = <string>url;
+    //             inputIMG.value = <string>url;
+    //         }).catch( (url) => {
+    //             console.log(url)
+    //             this.getImage('https://www.google.com/s2/favicons?domain='+input.value).then( (url) => {
+
+    //                 img.src = <string>url;
+    //                 inputIMG.value = <string>url;
+    //             }).catch( (url) => {
+    //                 img.src = '../assets/enlace.svg';
+    //             });
+    //         })
+            
+    //     //}
+    // }
     // getImage(url:string) {
-    //     return new Promise( (resolve, reject) => {
-    //         var http = new XMLHttpRequest();
-    //         http.open("GET", url,true);
-    //         http.onerror = () => { 
-    //             reject(url);
-    //         }
-    //         http.onload = () => {
+    //     return new Promise(function(resolve, reject){
+    //         const img = new Image();
+    //         img.onload = () => {   
     //             resolve(url);
     //         }
-    //         try {
-    //             http.send();
-    //         } catch (exception) {
-    //             reject(url)
+    //         img.onerror = (ev) => {
+                
+    //             reject(url);
     //         }
-    //     });
+            
+    //         img.src = url;
+    //     })
     // }
 
     printOptions(div:HTMLDivElement) {

@@ -89,18 +89,21 @@ form {
 form>input {
     user-select: text;
     padding-left: 1rem;
-    width: 50vw;
+    width: 35vw;
     height: calc(1rem + 4vh);
     font-size: calc(1rem + .5vmin);
+    box-shadow: var(--default-box-shadow);
+    border: none;
 }
 form>button {
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 20px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
     background-color: var(--dark-color);
     width: calc(1rem + 4vw);
     height: calc(1rem + 4vh);
     padding: 0;
     border: none;
+    box-shadow: var(--default-box-shadow);
     padding-right: .5rem;
 }
 form>button>svg {
@@ -123,17 +126,10 @@ app-filters {
 .icons {
     display: flex;
     flex-direction: row;
-    max-height: 30vh;
     place-content: center;
-}
-
-app-icon-link {
-    display: flex;
-    flex-direction: row;
-   justify-self: center;
+    height: fit-content;
 }
 app-order-selector {
-
     justify-self: right;
 }
 

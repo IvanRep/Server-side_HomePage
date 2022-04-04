@@ -3,12 +3,21 @@
     --dark-color: rgb(32, 33, 36);
     --icons-shadow-color: rgb(32, 33, 36,90%);
     --dark-transparent-color: rgba(32, 33, 36, 10%);
-    --main-color: white; 
+    --main-color: whitesmoke; 
     --text-color: rgb(118, 120, 126);
     --separator-color: rgb(232, 97, 97);
     --danger-color: #f53c3c;
     --border-icons-color: rgb(64, 75, 222);
     --selectors-color: rgb(255, 171, 171);
+
+    /* --folders-color: rgba(255, 213, 62, 0.733);
+    --folders-dark-color: rgba(211, 176, 48, 0.733); */
+    --folders-color: rgb(32, 33, 36);
+    --folders-secondary-color: rgb(124, 121, 121);
+    --default-box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.24);
+
+    --link-width: 140px;
+    --link-height: 89px;
 
 }
 @font-face {
@@ -21,11 +30,12 @@
     user-select: none;
 }
 body, app-root {
-    overflow: hidden;
+    overflow-x: hidden;
     min-height: 100vh;
     max-height: 100vh;
     max-width: 100vw;
     margin: 0%;
+    scroll-behavior: smooth;
 }
 app-root {
     display: grid;
@@ -35,6 +45,33 @@ app-root {
 button, input[type=button], input[type=submit], input[type=reset] {
     cursor: pointer;
 }
+/* SCROLLBAR */
+
+app-root::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+app-root.hideScroll::-webkit-scrollbar {
+    display: none;
+}
+app-root::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+}
+app-root::-webkit-scrollbar:vertical {
+    width: 10px;   
+}
+app-root::-webkit-scrollbar-thumb {
+    background-color: var(--dark-color);
+    border-radius: 0px;
+
+}
+app-root::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+app-root {
+    /*Estilos estándar experimentales (Principalmente Firefox)*/
+    scrollbar-color: var(--dark-color);
+    scrollbar-width: thin;
+}   
 
 /* POP-UP CSS */
 

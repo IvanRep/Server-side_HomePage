@@ -70,6 +70,10 @@ export class LinkService {
     return this.http.delete(this.url+'/folders.php?id='+link.getId(),{responseType: 'json'});
   }
 
+  getPage(url:string) {
+    return this.http.get(url);
+  }
+
   /* Guarda los datos de la sesión en almacenamiento local del usuario */
   localSave(list_links:Target[], icon_links:Target[]) {
     const links = icon_links.concat(list_links);
