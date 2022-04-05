@@ -24,8 +24,7 @@ export class IconsComponent implements OnInit, OnChanges {
   showScroll = true;
   @ViewChildren(IconLinkComponent)
   iconLinkComponent!: QueryList<IconLinkComponent>;
-  @ViewChild('right')
-  rightButton!:ElementRef;
+  @ViewChild('folder') folder!:ElementRef;
 
   constructor() { }
 
@@ -34,27 +33,18 @@ export class IconsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const main = (<HTMLDivElement>document.querySelector('.icons main'));
-    //Mostrar u Ocultar flechas de desplazamiento
-    if (this.rightButton) {
-      if (this.icon_links.length > 4) 
-        this.rightButton.nativeElement.style.display = 'block';
-      else {
-        this.rightButton.nativeElement.style.display = 'none';
-      }
-    }
   }
 
   openFolder(options:any = {open: false, index: 0}) {
-    this.showScroll = !options.open;
 
-    for (let i = 0; i<this.icon_links.length;i++) {
-      if (i == options.index) {
-        options.open ? this.selectedFolder = this.icon_links[i] : this.selectedFolder = null;
-        return;
+    this.iconLinkComponent.forEach(item => {
+      if (item.index == options.index) {
+        options.open ? this.selectedFolder = item : this.selectedFolder = null;
+        item.showLinks = options.open;
+      } else {
+        item.showLinks = false;
       }
-    }
-
+    });
   }
 
   //Ejecutado al hacer scroll en el main, recorre todos los iconos, y ejecuta el metodo updatePosition para actualizar la posición de los links de carpetas

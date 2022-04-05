@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
   title = 'HomePage';
 
   user:User = new User();
-  search_engine:string = 'https://www.google.com';
 
   isEditMode:boolean = false;
   isListLink:boolean = false;
@@ -267,19 +266,6 @@ export class AppComponent implements OnInit {
           break;
       }
     });
-  }
-
-  /* 
-  Recibe como parametro un string con la dirección url del motor de busqueda seleccionado y modifica el atributo search_engine
-  */
-  setSearchEngine(engine:string) {
-    if (engine.match(/.*duckduckgo.*/))
-      this.search_engine = engine;
-    else if (engine.match(/.*youtube.*/))
-      this.search_engine = engine+'/results';
-    else
-      this.search_engine = engine+'/search';
-    
   }
 
   /*

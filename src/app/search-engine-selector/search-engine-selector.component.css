@@ -1,5 +1,5 @@
 button {
-    width: calc(1rem + 4vw);
+    width: var(--search-button-width);
     height: calc(1rem + 4vh);
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
@@ -7,6 +7,10 @@ button {
     box-shadow: var(--default-box-shadow);
     background-color: white;
 
+}
+button.deployed {
+    border-bottom-left-radius: 0px !important;
+    border-bottom: none;
 }
 
 button img {

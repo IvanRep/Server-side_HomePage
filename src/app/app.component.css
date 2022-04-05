@@ -77,40 +77,16 @@ aside.open ~ header app-user {
     transform: translateX(-28.2vw);
 }
 
-form {
+app-search {
     grid-column-start: 2;
     grid-column-end: 5;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--main-color);
+
     border-bottom: solid .5vmin var(--separator-color);
 }
-form>input {
-    user-select: text;
-    padding-left: 1rem;
-    width: 35vw;
-    height: calc(1rem + 4vh);
-    font-size: calc(1rem + .5vmin);
-    box-shadow: var(--default-box-shadow);
-    border: none;
-}
-form>button {
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
-    background-color: var(--dark-color);
-    width: calc(1rem + 4vw);
-    height: calc(1rem + 4vh);
-    padding: 0;
-    border: none;
-    box-shadow: var(--default-box-shadow);
-    padding-right: .5rem;
-}
-form>button>svg {
-    width: calc(1rem + 2vmin);
-    height: calc(1rem + 1vmin);
-    color: var(--main-color);
-}
+
 main {
     grid-column-start: 2;
     grid-column-end: 5;

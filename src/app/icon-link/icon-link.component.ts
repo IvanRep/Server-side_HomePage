@@ -15,6 +15,7 @@ export class IconLinkComponent implements OnInit, OnChanges {
 
   @Input() link:any = null;
   @Input() index:number = 0;
+  @Input() hasFatherFolder:boolean = false;
 
   @Input() isEditMode:boolean = false;
   cantDelete:boolean = false;
@@ -41,7 +42,7 @@ export class IconLinkComponent implements OnInit, OnChanges {
       //Actualizo la posición del link
       this.link.setNumberLink(this.index);
 
-      if (this.link.getUserId() != 0) { //Si el usuario a iniciado sesión
+      if (this.link.getUserId() != 0 && !this.hasFatherFolder) { //Si el usuario a iniciado sesión
         //Actualizo el link en la base de datos y si no existe lo guardo
         if (this.link.getIsSaved()) {
           this.linkService.updateLink(this.link).subscribe();

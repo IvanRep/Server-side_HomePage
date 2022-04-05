@@ -1,4 +1,4 @@
-<button type="button" (click)="openEngines()">
+<button type="button" (click)="openEngines()" [ngClass]="{'deployed': deployed}">
     <img [src]="activeEngine.img"  />
 </button>
 

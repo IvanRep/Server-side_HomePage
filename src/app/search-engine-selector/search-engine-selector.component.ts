@@ -10,7 +10,9 @@ export class SearchEngineSelectorComponent implements OnInit {
   constructor() { }
 
   @Input() isEditMode:boolean = false;
-  @Output() activeEngineEmitter:EventEmitter<string> = new EventEmitter<string>();
+  @Input() deployed:boolean = false;
+
+  @Output() activeEngineEmitter:EventEmitter<any> = new EventEmitter<any>();
   isOpen:boolean = false;
 
   activeEngine = {url: 'http://google.es', img: 'http://google.es/favicon.ico'};
@@ -31,7 +33,7 @@ export class SearchEngineSelectorComponent implements OnInit {
     if (!this.isOpen) return; //Evito que se pueda cambiar de engine mientras se cierrar los botones
 
     this.activeEngine = this.engines.splice(engine,1,this.activeEngine)[0];
-    this.activeEngineEmitter.emit(this.activeEngine.url);
+    this.activeEngineEmitter.emit(this.activeEngine);
     this.isOpen = false;
   }
 

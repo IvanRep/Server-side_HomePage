@@ -4,10 +4,13 @@
         Añadir un link +
     </button>
     
-    <div class="folderLinks" *ngIf="selectedFolder">
-        <h3>{{selectedFolder.getName()}}</h3>
-        <div>
-            <app-icon-link *ngFor="let folderLink of selectedFolder.getLinks();" [link]="folderLink"></app-icon-link>
+    <div class="folderLinks" *ngIf="selectedFolder" #folder>
+        <h3 >{{selectedFolder.link.getName()}}</h3>
+        <div class="icons">
+            <app-icon-link *ngFor="let folderLink of selectedFolder.link.getLinks();" [link]="folderLink" [hasFatherFolder]="true"></app-icon-link>
+            <button class="newButton" (click)="selectedFolder.addLinkPopUp($event)">
+                Añadir un link +
+            </button>
         </div>
     </div>
 </main>

@@ -10,8 +10,9 @@
     --border-icons-color: rgb(64, 75, 222);
     --selectors-color: rgb(255, 171, 171);
 
-    /* --folders-color: rgba(255, 213, 62, 0.733);
-    --folders-dark-color: rgba(211, 176, 48, 0.733); */
+    --search-bar-width: 35vw;
+    --search-button-width: calc(1rem + 4vw);
+
     --folders-color: rgb(32, 33, 36);
     --folders-secondary-color: rgb(124, 121, 121);
     --default-box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.24);
