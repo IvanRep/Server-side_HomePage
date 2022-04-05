@@ -89,7 +89,6 @@ export class AppComponent implements OnInit {
           savedFolderLinks.push(new Link(link.type,link.number_link,folderLink.url,folderLink.visible_url,0,folderLink.name,link.user_id,folderLink.id,true));
         }
         savedLink = new Folder(link.type,link.number_link,link.folder,link.name,savedFolderLinks.slice(),link.user_id,link.id,true);
-        console.log(savedLink.getLinks());
       }
       if (link.type == 'ICON') {
         this.icon_links.push(savedLink);

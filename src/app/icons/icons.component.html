@@ -1,6 +1,6 @@
 <main class="icons-main" (scroll)="updatePosition()" [ngClass]="{'hideScroll' : !showScroll}">
     <app-icon-link *ngFor="let link of icon_links; index as i" [filters]="filters" [index]="i" [link]="link" [isEditMode]="isEditMode" [showLinks]="foldersOpen[i]" (newLinkEmitter)="this.newLinkEmitter.emit($event)" (editLinkEmitter)="this.editLinkEmitter.emit($event)" (deleteLinkEmitter)="this.deleteLinkEmitter.emit($event)" (isOpenFolderEmitter)="openFolder($event)"></app-icon-link>
-    <button class="newButton" (click)="this.newLinkEmitter.emit(newLink)" #newLink>
+    <button class="newButton" (click)="this.newLinkEmitter.emit(newLink)" [value]="this.icon_links.length" #newLink>
         Añadir un link +
     </button>
     
