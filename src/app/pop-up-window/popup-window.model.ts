@@ -171,70 +171,33 @@ export class PopUpWindow {
     }
 
     setNewLinkImage(input:HTMLInputElement,inputIMG:HTMLInputElement, img:HTMLImageElement) {
-        let textUrl:string;
-        !input.value.trim().startsWith('http://') && !input.value.trim().startsWith('https://') ? textUrl = 'http://'+input.value.trim() : textUrl = input.value.trim();
-        
-        
-        //page?.close();
-        
-        var num = Math.round(1000 * Math.random());
-        var callbackMethodName:string = "cb_" + num;
+            let textUrl:string;
+            !input.value.trim().startsWith('http://') && !input.value.trim().startsWith('https://') ? textUrl = 'http://'+input.value.trim() : textUrl = input.value.trim();
+            
+            this.getImage(textUrl+'/favicon.ico').then( (url) => {
+                img.src = <string>url;
+                inputIMG.value = <string>url;
+            }).catch( (url) => {
+                console.log(url)
+                this.getImage('https://www.google.com/s2/favicons?domain='+input.value).then( (url) => {
 
-        var cb = function(data:any) {
-            console.log(document.images)
-        }
-
-        var sc = document.createElement("script");
-        sc.id = "script_" + callbackMethodName;
-        sc.src = textUrl+"?callback=cb";
-        document.body.appendChild(sc);
-        document.getElementById(sc.id)?.remove();
-    
-
-        // const page = window.open(textUrl,'_blank');
-        // page?.document.addEventListener('DOMContentLoaded', (event) => {
-        //     console.log(page.document);
-        //     if (page.document.images.length > 0) {
-        //         img.src = page.document.images[0].src;
-        //     }
-        // });
+                    img.src = <string>url;
+                    inputIMG.value = <string>url;
+                }).catch( (url) => {
+                    img.src = '../assets/enlace.svg';
+                });
+            })
     }
+    getImage(url:string) {
+        return new Promise(function(resolve, reject){
+            const img = new Image();
+            img.addEventListener('load', () => {resolve(url)});
 
-    // setNewLinkImage(input:HTMLInputElement,inputIMG:HTMLInputElement, img:HTMLImageElement) {
-    //     //if (inputIMG.value.trim() == '') {
-    //         let textUrl:string;
-    //         !input.value.trim().startsWith('http://') && !input.value.trim().startsWith('https://') ? textUrl = 'http://'+input.value.trim() : textUrl = input.value.trim();
+            img.addEventListener('error', () => {reject(url)});
             
-    //         this.getImage(textUrl+'/favicon.ico').then( (url) => {
-    //             img.src = <string>url;
-    //             inputIMG.value = <string>url;
-    //         }).catch( (url) => {
-    //             console.log(url)
-    //             this.getImage('https://www.google.com/s2/favicons?domain='+input.value).then( (url) => {
-
-    //                 img.src = <string>url;
-    //                 inputIMG.value = <string>url;
-    //             }).catch( (url) => {
-    //                 img.src = '../assets/enlace.svg';
-    //             });
-    //         })
-            
-    //     //}
-    // }
-    // getImage(url:string) {
-    //     return new Promise(function(resolve, reject){
-    //         const img = new Image();
-    //         img.onload = () => {   
-    //             resolve(url);
-    //         }
-    //         img.onerror = (ev) => {
-                
-    //             reject(url);
-    //         }
-            
-    //         img.src = url;
-    //     })
-    // }
+            img.src = url;
+        })
+    }
 
     printOptions(div:HTMLDivElement) {
 

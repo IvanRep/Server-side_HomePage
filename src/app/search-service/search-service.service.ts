@@ -9,16 +9,16 @@ export class SearchServiceService {
   constructor(private http:HttpClient) { }
 
   getSearchSuggestions(query:string, languageCode:string) {
-    let params = new HttpParams();
-    params.append('output','toolbar');
-    params.append('q',query);
-    params.append('hl',languageCode);
 
     return this.http.jsonp('http://suggestqueries.google.com/complete/search?client=firefox&q='+query, 'callback');
   }
 
-  getWebImages() {
-    
+  getWebImages(url:string) {
+    this.http.jsonp(url,'callback').subscribe( (data:any) => {
+
+      console.log(data);
+      //const doc = data.documentElement;
+    });
   }
 
 }
