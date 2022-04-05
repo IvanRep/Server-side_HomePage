@@ -75,6 +75,8 @@ export class SearchComponent implements OnInit {
     const query = (<HTMLInputElement>this.queryInput.nativeElement);
     query.value = suggestion;
     query.focus();
+
+    this.showSuggestions();
   }
 
 }
