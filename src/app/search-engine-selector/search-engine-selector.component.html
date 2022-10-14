@@ -1,7 +1,0 @@
-<button type="button" (click)="openEngines()" [ngClass]="{'deployed': deployed}">
-    <img [src]="activeEngine.img"  />
-</button>
-
-<button *ngFor="let engine of engines, index as i" class="selectEngine" [ngClass]="{'open': isOpen}" type="button" (click)="changeActiveEngine(i)">
-    <img [src]="engine.img" (error)="changeImg($event,i)"/>
-</button>

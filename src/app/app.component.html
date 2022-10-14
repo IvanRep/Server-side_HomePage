@@ -1,29 +1,14 @@
-<!-- Barra Lateral para mostrar enlaces modo "lista" -->
-<aside (click)="openListLink()" [ngClass]="{'close' : !isListLink, 'open' : isListLink}">
-  <app-aside [filters]="filters" [list_links]="list_links" [isEditMode]="isEditMode" [open]="isListLink" (newLinkEmitter)="this.createNewLink($event,'LIST')" (deleteLinkEmitter)="this.deleteLink($event,'LIST')" (closeAsideEmitter)="closeAside()" ></app-aside>
-</aside>
-<!-- Cabecera (Información del usuario, modo edición, configuración avanzada) -->
-<header>
-  <!-- Activa el modo edición en la página -->
-  <button id="editMode" title="Modo Edición" (click)="this.toggleEditMode()" [ngClass]="{'isEditMode' : isEditMode}">
-    <!-- <img src="./assets/edit_mode.svg" /> -->
-    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
-      <rect fill="none" height="24" width="24"/>
-      <path d="M3,10h11v2H3V10z M3,8h11V6H3V8z M3,16h7v-2H3V16z M18.01,12.87l0.71-0.71c0.39-0.39,1.02-0.39,1.41,0l0.71,0.71 c0.39,0.39,0.39,1.02,0,1.41l-0.71,0.71L18.01,12.87z M17.3,13.58l-5.3,5.3V21h2.12l5.3-5.3L17.3,13.58z"/>
-    </svg>
-  </button>
-
-  <!-- Componente que controla el usuario -->
-  <app-user (loginEmitter)="userLogin($event)" (closeSesionEmitter)="closeSesion()" [user]="user"></app-user>
-</header>
-
-<!-- Formulario para controlar la busqueda en google -->
-<app-search [isEditMode]="isEditMode"></app-search>
-
-<main>
-  <!-- Iconos (recorren array con urls) -->
-  <app-icons  class="icons"  [filters]="filters" [isEditMode]="isEditMode" [icon_links]="icon_links" (newLinkEmitter)="this.createNewLink($event,'ICON')" (editLinkEmitter)="editLink($event,'ICON')" (deleteLinkEmitter)="this.deleteLink($event,'ICON')"></app-icons>
-
-   <!-- Componente para controlar los filtros sobre los iconos -->
-   <app-filters (filterEmitter)="showOnly($event)"></app-filters>
-</main>
+<div class="top-menu">
+  <button></button>
+  <button></button>
+  <button></button>
+</div>
+<div class="left-menu">
+  <button></button>
+  <button></button>
+  <button></button>
+</div>
+<div class="search-bar"></div>
+<div class="information-panel"></div>
+<div class="main-panel"></div>
+<div class="main-menu"></div>
