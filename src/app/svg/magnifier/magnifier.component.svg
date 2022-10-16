@@ -1,0 +1,36 @@
+<svg
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 19.226721 19.493633"
+   width="410.17004"
+   height="415.86417"
+   version="1.1"
+   sodipodi:docname="search.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs275">
+    <linearGradient
+       id="linearGradient1045"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop1043" />
+    </linearGradient>
+  </defs>
+  <circle
+     style="fill:none;stroke:#000000;stroke-width:2.48817;stroke-dasharray:none;stroke-opacity:1"
+     id="path362"
+     cx="-7.1632109"
+     cy="7.1632118"
+     r="5.9191265"
+     transform="scale(-1,1)" />
+  <path
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.21772;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+     d="m 11.253479,11.466127 6.864382,6.918647"
+     id="path1112" />
+</svg>
