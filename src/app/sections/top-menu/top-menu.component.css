@@ -1,0 +1,13 @@
+button {
+    height: 85%;
+    aspect-ratio: 1 / 1;
+    margin-left: 1%;
+
+    background-color: var(--secondary-background-color);
+    border-radius: 100%;
+    border: 2px solid white;
+}
+
+button.user {
+    margin-left: auto;
+}

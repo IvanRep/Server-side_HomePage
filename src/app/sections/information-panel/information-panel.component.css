@@ -1,0 +1,27 @@
+div.main {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 55%;
+    background-color: white;
+    border-radius: 25vw;
+}
+
+div.main>div {
+    display: flex;
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
+    font-size: max(15px,6.5vmin);
+    font-weight: bold;
+    color: var(--secondary-background-color);
+}
+div.main button {
+    height: 120%;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    padding: 0%;
+    background-color: var(--secondary-background-color);
+    border: 2px solid var(--secondary-background-color);
+}

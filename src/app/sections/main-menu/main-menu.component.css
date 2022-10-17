@@ -1,0 +1,80 @@
+div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 5%;
+    max-height: 10%;
+    width: 100%;
+    border-left: 2px solid var(--secondary-background-color);
+}
+div button {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    
+}
+div input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    font-size: max(10px,.9vw);
+    font-weight: bold;
+}
+ul {
+    align-items: center;
+    justify-content: center;
+    margin: 0%;
+    margin-top: 2%;
+    padding: 0%;
+    width: 95%;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+li {
+    margin: auto;
+    list-style: none;
+    text-align: center;
+    width: 65%;
+    border-radius: 15vw;
+    padding: 2.5%;
+    background-color: var(--secondary-accent-color);
+    color: white;
+    border-right: 3px solid var(--border-color);
+    border-bottom: 3px solid var(--border-color);
+    margin-top: 6%;
+    margin-bottom: 6%;
+
+}
+
+/* MAIN MENU SROLL BAR */
+ul::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+ul::-webkit-scrollbar-button:increment {
+    display: none;
+}
+ul::-webkit-scrollbar:vertical {
+    width:10px;
+    background-color: var(--main-background-color);
+    border-radius: 15vw;
+    
+}
+ul::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-background-color);
+    border: 1px solid #f1f2f3;
+    border-radius: 20px;
+
+}
+ul::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+ul {
+    /*Estilos estándar experimentales (Principalmente Firefox)*/
+    scrollbar-color: var(--secondary-background-color);
+    scrollbar-width: thin;
+}

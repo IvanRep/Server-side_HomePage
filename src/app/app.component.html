@@ -1,121 +1,14 @@
 <!-- TOP MENU -->
-<div class="top-menu">
-  <button>
-    <app-svg-save></app-svg-save>
-  </button>
-  <button>
-    <app-svg-upload></app-svg-upload>
-  </button>
-  <button class="user">
-    <app-svg-user></app-svg-user>
-  </button>
-</div>
+<app-top-menu></app-top-menu>
 <!-- LEFT MENU -->
-<div class="left-menu">
-  <button>
-    <app-svg-items></app-svg-items>
-  </button>
-  <button>
-    <app-svg-double-list></app-svg-double-list>
-  </button>
-  <button>
-    <app-svg-list></app-svg-list>
-  </button>
-</div>
+<app-left-menu></app-left-menu>
 <!-- SEARCH BAR -->
-<div class="search-bar">
-
-  <form method="get" action="search?q=asd&hl=es" target="search-results">
-    <button class="engine-button" type="submit" tabindex="-1">
-      
-    </button>
-    <input type="text" name="q"  maxlength="255" autocomplete="off" title="Búsqueda en Google" placeholder="Búsqueda en Google"  #queryInput>
-    <input type="hidden" name="hl" value="es" #languageCode>
-    <button class="search-button" type="submit" name="btnG" title="Buscar con Google" tabindex="-1">
-          <app-magnifier></app-magnifier>
-    </button>
-      
-  </form>
-  <!-- <div class="suggestions" [ngClass]="{'deployed':deployed}" #suggestionsRef>
-          <ul>
-              <li *ngFor="let suggestion of suggestions" (click)="setSuggestion(suggestion)" [value]="suggestion" tabindex="0">
-                  <div><img [src]="activeEngineImg" /></div>
-                  {{suggestion}}
-              </li>
-          </ul>
-      </div> -->
-</div>
+<app-search-bar></app-search-bar>
 
 <!-- INFORMATION PANEL -->
-<div class="information-panel">
-  <div>
-    <div>16:00</div>
-    <button>
-      <app-svg-clock></app-svg-clock>
-    </button>
-  </div>
-</div>
+<app-information-panel></app-information-panel>
 <!-- MAIN PANEL -->
-<div class="main-panel">
-  <!-- <div class="link">
-    <div>
-    <div></div>
-    Nombre del Link
-    </div>
-    <button>
-      <app-svg-link></app-svg-link>
-    </button>
-    <button>
-      <app-svg-new-tab></app-svg-new-tab>
-    </button>
-    <button>
-      <app-svg-copy-link></app-svg-copy-link>
-    </button>
-  </div>
-
-  <div class="link">
-    <div>
-    <div></div>
-    Nombre del Link
-    </div>
-    <button>
-      <app-svg-link></app-svg-link>
-    </button>
-    <button>
-      <app-svg-new-tab></app-svg-new-tab>
-    </button>
-    <button>
-      <app-svg-copy-link></app-svg-copy-link>
-    </button>
-  </div> -->
-  
-  <div class="gcse-searchresults-only" style="max-width: 100%; width: 100%;"></div>
-  <!-- MAIN PANEL - IFRAME -->
-  <!-- <iframe name="search-results" src="http://www.google.com/webhp?q=&btnG=Search">
-
-  </iframe> -->
-
-</div>
+<app-main-panel></app-main-panel>
 
 <!-- MAIN MENU -->
-<div class="main-menu">
-  <div>
-    <button>
-      <app-svg-tags></app-svg-tags>
-    </button>
-    <input type="search" placeholder="Filtrar Etiquetas" />
-  </div>
-  <ul>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-  </ul>
-</div>
+<app-main-menu></app-main-menu>

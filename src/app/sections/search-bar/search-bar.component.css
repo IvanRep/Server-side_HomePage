@@ -1,0 +1,45 @@
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+input {
+    width: 80%;
+    max-width: 80%;
+    min-height: 20px;
+    height: 45%;
+    max-height: 45%;
+
+    font-size: 20px;
+    padding: 2px;
+    border: 1px solid black;
+    border-right: none;
+    border-left: none;
+}
+button.engine-button {
+    min-width: 45px;
+    width: 5%;
+    min-height: 20px;
+    height: 45%;
+
+    background-color: white;
+    border: 1px solid black;
+    border-right: none;
+    border-top-left-radius: 15vw;
+    border-bottom-left-radius: 15vw;
+}
+button.search-button {
+    min-width: 45px;
+    width: 5%;
+    min-height: 20px;
+    height: 45%;
+
+    background-color: white;
+    border: 1px solid black;
+    border-left: none;
+    border-top-right-radius: 15vw;
+    border-bottom-right-radius: 15vw;
+    padding-right: 1%;
+}

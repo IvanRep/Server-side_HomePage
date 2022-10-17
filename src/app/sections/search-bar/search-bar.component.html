@@ -1,0 +1,21 @@
+
+<form method="get" action="search?" target="search-results">
+    <button class="engine-button" type="submit" tabindex="-1">
+        
+    </button>
+    <input type="text" name="q"  maxlength="255" autocomplete="off" title="Búsqueda en Google" placeholder="Búsqueda en Google"  #queryInput>
+    <input type="hidden" name="hl" value="es" #languageCode>
+    <button class="search-button" type="submit" name="btnG" title="Buscar con Google" tabindex="-1">
+            <app-magnifier></app-magnifier>
+    </button>
+    <!-- <div class="suggestions" [ngClass]="{'deployed':deployed}" #suggestionsRef>
+        <ul>
+            <li *ngFor="let suggestion of suggestions" (click)="setSuggestion(suggestion)" [value]="suggestion" tabindex="0">
+                <div><img [src]="activeEngineImg" /></div>
+                {{suggestion}}
+            </li>
+        </ul>
+    </div> -->
+        
+</form>
+

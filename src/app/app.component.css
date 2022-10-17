@@ -1,5 +1,5 @@
 /* TOP MENU */
-div.top-menu {
+app-top-menu {
     grid-area: tm;
     background-color: var(--secondary-background-color);
     border-bottom: 2px solid var(--border-color);
@@ -10,21 +10,9 @@ div.top-menu {
     padding-left: 1%;
     padding-right: 3%;
 }
-div.top-menu button {
-    height: 85%;
-    aspect-ratio: 1 / 1;
-    margin-left: 1%;
 
-    background-color: var(--secondary-background-color);
-    border-radius: 100%;
-    border: 2px solid white;
-}
-
-div.top-menu button.user {
-    margin-left: auto;
-}
 /* LEFT MENU */
-div.left-menu {
+app-left-menu {
     grid-area: lm;
     background-color: var(--secondary-background-color);
     border-right: 2px solid var(--main-background-color);
@@ -35,16 +23,8 @@ div.left-menu {
     justify-content: end;
 }
 
-div.left-menu button {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    margin-bottom: 10%;
-    border: none;
-    background: none;
-}
-
 /* SEARCH BAR */
-div.search-bar {
+app-search-bar {
     grid-area: sb;
     background-color: var(--main-background-color);
 
@@ -54,54 +34,9 @@ div.search-bar {
     border-bottom: 2px solid var(--accent-color);
     
 }
-div.search-bar form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-}
-div.search-bar input {
-    width: 80%;
-    max-width: 80%;
-    min-height: 20px;
-    height: 45%;
-    max-height: 45%;
-
-    font-size: 20px;
-    padding: 2px;
-    border: 1px solid black;
-    border-right: none;
-    border-left: none;
-}
-div.search-bar button.engine-button {
-    min-width: 45px;
-    width: 5%;
-    min-height: 20px;
-    height: 45%;
-
-    background-color: white;
-    border: 1px solid black;
-    border-right: none;
-    border-top-left-radius: 15vw;
-    border-bottom-left-radius: 15vw;
-}
-div.search-bar button.search-button {
-    min-width: 45px;
-    width: 5%;
-    min-height: 20px;
-    height: 45%;
-
-    background-color: white;
-    border: 1px solid black;
-    border-left: none;
-    border-top-right-radius: 15vw;
-    border-bottom-right-radius: 15vw;
-    padding-right: 1%;
-}
 
 /* INFORMATION PANEL */
-div.information-panel {
+app-information-panel {
     grid-area: ip;
     background-color: var(--secondary-background-color);
 
@@ -110,36 +45,9 @@ div.information-panel {
     justify-content: center;
     border-bottom: 1px solid var(--accent-color);
 }
-div.information-panel>div {
-    display: flex;
-    align-items: center;
-    width: 70%;
-    height: 55%;
-    background-color: white;
-    border-radius: 25vw;
-}
-
-div.information-panel>div>div {
-    display: flex;
-    margin: auto;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    
-    font-size: max(15px,6.5vmin);
-    font-weight: bold;
-    color: var(--secondary-background-color);
-}
-div.information-panel>div button {
-    height: 120%;
-    aspect-ratio: 1 / 1;
-    border-radius: 100%;
-    padding: 0%;
-    background-color: var(--secondary-background-color);
-    border: 2px solid var(--secondary-background-color);
-}
 
 /* MAIN PANEL */
-div.main-panel {
+app-main-panel {
     grid-area: mp;
     background-color: var(--main-background-color);
     
@@ -149,72 +57,35 @@ div.main-panel {
     max-height: 100%;
     overflow: auto;
 }
-div.main-panel div.link {
-    display: flex;
-    width: 100%;
-    height: max(40px,7%);
-    padding-left: 6%;
-    margin-top: 2%;
-}
-
-div.main-panel div.link>div {
-    display: flex;
-    align-items: center;
-    width: 60%;
-    border: solid 2px var(--light-border-color);
-    border-radius: 15vw;
-}
-
-/* Link Logo */
-div.main-panel div.link>div>div {
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    border: 2px solid var(--light-border-color);
-    border-radius: 100%;
-    margin-left: 1%;
-    margin-right: 5%;
-}
-
-div.main-panel div.link button {
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 15vw;
-    padding: .7%;
-    border: 2px solid var(--light-border-color);
-    margin-left: 1%;
-    background-color: var(--main-background-color);
-}
 
 /* MAIN PANEL SROLL BAR */
-div.main-panel::-webkit-scrollbar {
+app-main-panel::-webkit-scrollbar {
     -webkit-appearance: none;
 }
-div.main-panel::-webkit-scrollbar-button:increment {
+app-main-panel::-webkit-scrollbar-button:increment {
     display: none;
 }
-div.main-panel::-webkit-scrollbar:vertical {
+app-main-panel::-webkit-scrollbar:vertical {
     width:10px;
     
 }
-div.main-panel::-webkit-scrollbar-thumb {
+app-main-panel::-webkit-scrollbar-thumb {
     background-color: var(--secondary-background-color);
     border: 1px solid #f1f2f3;
     border-radius: 20px;
 
 }
-div.main-panel::-webkit-scrollbar-track {
+app-main-panel::-webkit-scrollbar-track {
     border-radius: 10px;  
 }
-div.main-panel {
+app-main-panel {
     /*Estilos estándar experimentales (Principalmente Firefox)*/
     scrollbar-color: var(--secondary-background-color);
     scrollbar-width: thin;
 }
 
-
-
 /* MAIN MENU */
-div.main-menu {
+app-main-menu {
     grid-area: mm;
     background-color: antiquewhite;
 
@@ -227,84 +98,5 @@ div.main-menu {
     background-color: var(--secondary-background-color);
     
 }
-div.main-menu>div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 5%;
-    max-height: 10%;
-    width: 100%;
-    border-left: 2px solid var(--secondary-background-color);
-}
-div.main-menu>div button {
-    height: 100%;
-    aspect-ratio: 1 / 1;
 
-    background-color: white;
-    border: none;
-    border-bottom: 1px solid var(--border-color);
-    
-}
-div.main-menu>div input {
-    height: 100%;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid var(--border-color);
-    font-size: max(10px,.9vw);
-    font-weight: bold;
-}
-div.main-menu ul {
-    align-items: center;
-    justify-content: center;
-    margin: 0%;
-    margin-top: 2%;
-    padding: 0%;
-    width: 95%;
-    height: 100%;
-    max-height: 100%;
-    overflow-y: scroll;
-}
-div.main-menu li {
-    margin: auto;
-    list-style: none;
-    text-align: center;
-    width: 50%;
-    border-radius: 15vw;
-    padding: 2.5%;
-    background-color: var(--secondary-accent-color);
-    color: white;
-    border-right: 3px solid var(--border-color);
-    border-bottom: 3px solid var(--border-color);
-    margin-top: 6%;
-    margin-bottom: 6%;
-
-}
-
-/* MAIN MENU SROLL BAR */
-div.main-menu ul::-webkit-scrollbar {
-    -webkit-appearance: none;
-}
-div.main-menu ul::-webkit-scrollbar-button:increment {
-    display: none;
-}
-div.main-menu ul::-webkit-scrollbar:vertical {
-    width:10px;
-    background-color: var(--main-background-color);
-    border-radius: 15vw;
-    
-}
-div.main-menu ul::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-background-color);
-    border: 1px solid #f1f2f3;
-    border-radius: 20px;
-
-}
-div.main-menu ul::-webkit-scrollbar-track {
-    border-radius: 10px;  
-}
-div.main-menu {
-    /*Estilos estándar experimentales (Principalmente Firefox)*/
-    scrollbar-color: var(--secondary-background-color);
-    scrollbar-width: thin;
-}
 
