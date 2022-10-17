@@ -14,6 +14,7 @@ import { SvgClockComponent } from './svg/svg-clock/svg-clock.component';
 import { SvgTagsComponent } from './svg/svg-tags/svg-tags.component';import { SvgLinkComponent } from './svg/svg-link/svg-link.component';
 import { SvgCopyLinkComponent } from './svg/svg-copy-link/svg-copy-link.component';
 import { SvgNewTabComponent } from './svg/svg-new-tab/svg-new-tab.component';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 ;
 
 @NgModule({
@@ -30,7 +31,8 @@ import { SvgNewTabComponent } from './svg/svg-new-tab/svg-new-tab.component';
     SvgTagsComponent,
     SvgLinkComponent,
     SvgCopyLinkComponent,
-    SvgNewTabComponent
+    SvgNewTabComponent,
+    TopMenuComponent
   ],
   imports: [
     BrowserModule,

@@ -25,24 +25,27 @@
 <!-- SEARCH BAR -->
 <div class="search-bar">
 
-  <button class="engine-button" type="submit" tabindex="-1">
-    
-  </button>
-  <input type="text" name="q" maxlength="255" autocomplete="off" title="Búsqueda en Google" placeholder="Búsqueda en Google"  #queryInput>
-  <input type="hidden" name="hl" value="es" #languageCode>
-  <button class="search-button" type="submit" name="btnG" title="Buscar con Google" tabindex="-1">
-        <app-magnifier></app-magnifier>
-  </button>
-    <!-- <div class="suggestions" [ngClass]="{'deployed':deployed}" #suggestionsRef>
-        <ul>
-            <li *ngFor="let suggestion of suggestions" (click)="setSuggestion(suggestion)" [value]="suggestion" tabindex="0">
-                <div><img [src]="activeEngineImg" /></div>
-                {{suggestion}}
-            </li>
-        </ul>
-    </div> -->
-
+  <form method="get" action="search?q=asd&hl=es" target="search-results">
+    <button class="engine-button" type="submit" tabindex="-1">
+      
+    </button>
+    <input type="text" name="q"  maxlength="255" autocomplete="off" title="Búsqueda en Google" placeholder="Búsqueda en Google"  #queryInput>
+    <input type="hidden" name="hl" value="es" #languageCode>
+    <button class="search-button" type="submit" name="btnG" title="Buscar con Google" tabindex="-1">
+          <app-magnifier></app-magnifier>
+    </button>
+      
+  </form>
+  <!-- <div class="suggestions" [ngClass]="{'deployed':deployed}" #suggestionsRef>
+          <ul>
+              <li *ngFor="let suggestion of suggestions" (click)="setSuggestion(suggestion)" [value]="suggestion" tabindex="0">
+                  <div><img [src]="activeEngineImg" /></div>
+                  {{suggestion}}
+              </li>
+          </ul>
+      </div> -->
 </div>
+
 <!-- INFORMATION PANEL -->
 <div class="information-panel">
   <div>
@@ -54,7 +57,7 @@
 </div>
 <!-- MAIN PANEL -->
 <div class="main-panel">
-  <div class="link">
+  <!-- <div class="link">
     <div>
     <div></div>
     Nombre del Link
@@ -84,8 +87,16 @@
     <button>
       <app-svg-copy-link></app-svg-copy-link>
     </button>
-  </div>
+  </div> -->
+  
+  <div class="gcse-searchresults-only" style="max-width: 100%; width: 100%;"></div>
+  <!-- MAIN PANEL - IFRAME -->
+  <!-- <iframe name="search-results" src="http://www.google.com/webhp?q=&btnG=Search">
+
+  </iframe> -->
+
 </div>
+
 <!-- MAIN MENU -->
 <div class="main-menu">
   <div>
@@ -95,6 +106,14 @@
     <input type="search" placeholder="Filtrar Etiquetas" />
   </div>
   <ul>
+    <li>Etiqueta</li>
+    <li>Etiqueta</li>
+    <li>Etiqueta</li>
+    <li>Etiqueta</li>
+    <li>Etiqueta</li>
+    <li>Etiqueta</li>
+    <li>Etiqueta</li>
+    <li>Etiqueta</li>
     <li>Etiqueta</li>
     <li>Etiqueta</li>
     <li>Etiqueta</li>

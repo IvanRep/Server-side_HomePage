@@ -54,6 +54,13 @@ div.search-bar {
     border-bottom: 2px solid var(--accent-color);
     
 }
+div.search-bar form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
 div.search-bar input {
     width: 80%;
     max-width: 80%;
@@ -138,6 +145,9 @@ div.main-panel {
     
     display: flex;
     flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+    overflow: auto;
 }
 div.main-panel div.link {
     display: flex;
@@ -175,6 +185,34 @@ div.main-panel div.link button {
     background-color: var(--main-background-color);
 }
 
+/* MAIN PANEL SROLL BAR */
+div.main-panel::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+div.main-panel::-webkit-scrollbar-button:increment {
+    display: none;
+}
+div.main-panel::-webkit-scrollbar:vertical {
+    width:10px;
+    
+}
+div.main-panel::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-background-color);
+    border: 1px solid #f1f2f3;
+    border-radius: 20px;
+
+}
+div.main-panel::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+div.main-panel {
+    /*Estilos estándar experimentales (Principalmente Firefox)*/
+    scrollbar-color: var(--secondary-background-color);
+    scrollbar-width: thin;
+}
+
+
+
 /* MAIN MENU */
 div.main-menu {
     grid-area: mm;
@@ -183,8 +221,11 @@ div.main-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    max-height: 100%;
 
     background-color: var(--secondary-background-color);
+    
 }
 div.main-menu>div {
     display: flex;
@@ -209,15 +250,19 @@ div.main-menu>div input {
     width: 100%;
     border: none;
     border-bottom: 1px solid var(--border-color);
-    font-size: .8vw;
+    font-size: max(10px,.9vw);
     font-weight: bold;
 }
 div.main-menu ul {
     align-items: center;
     justify-content: center;
     margin: 0%;
+    margin-top: 2%;
     padding: 0%;
-    width: 100%;
+    width: 95%;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
 }
 div.main-menu li {
     margin: auto;
@@ -234,3 +279,32 @@ div.main-menu li {
     margin-bottom: 6%;
 
 }
+
+/* MAIN MENU SROLL BAR */
+div.main-menu ul::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+div.main-menu ul::-webkit-scrollbar-button:increment {
+    display: none;
+}
+div.main-menu ul::-webkit-scrollbar:vertical {
+    width:10px;
+    background-color: var(--main-background-color);
+    border-radius: 15vw;
+    
+}
+div.main-menu ul::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-background-color);
+    border: 1px solid #f1f2f3;
+    border-radius: 20px;
+
+}
+div.main-menu ul::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+div.main-menu {
+    /*Estilos estándar experimentales (Principalmente Firefox)*/
+    scrollbar-color: var(--secondary-background-color);
+    scrollbar-width: thin;
+}
+

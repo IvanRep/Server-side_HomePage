@@ -14,19 +14,6 @@
     --error-color: #FF0000;
 
 }
-/* 
-main-background: #FFFFFF
-secondary-background: #222222
-
-accent: #CF4433
-main-accent: #CDCDCD
-secondary-accent: #444444
-
-light-border: #DEDEDE
-border: #999999
-dark-border: #444444
-
-error: #FF0000 */
 
 * {
     box-sizing: border-box;
@@ -46,17 +33,22 @@ body, app-root {
 
 app-root {
     display: grid;
-    grid-template-columns: minmax(25px, 2%);
-    grid-template-rows: minmax(40px, 5%) minmax(90px, 15%);
+    grid-template-columns: minmax(20px, 2%) minmax(330px, 70%) minmax(120px, 28%);
+    grid-template-rows: minmax(40px, 5%) minmax(90px, 15%) minmax(500px, 80%);
     grid-template-areas: 
-        "lm tm tm tm tm tm tm tm tm"
-        "lm sb sb sb sb sb sb ip ip"
-        "lm mp mp mp mp mp mp mm mm"
-        "lm mp mp mp mp mp mp mm mm"
-        "lm mp mp mp mp mp mp mm mm"
-        "lm mp mp mp mp mp mp mm mm"
-        "lm mp mp mp mp mp mp mm mm"
-        "lm mp mp mp mp mp mp mm mm"
-        "lm mp mp mp mp mp mp mm mm"
+        "lm tm tm"
+        "lm sb ip"
+        "lm mp mm"
 }
+
+/* grid-template-areas: 
+"lm tm tm tm tm tm tm tm tm"
+"lm sb sb sb sb sb sb ip ip"
+"lm mp mp mp mp mp mp mm mm"
+"lm mp mp mp mp mp mp mm mm"
+"lm mp mp mp mp mp mp mm mm"
+"lm mp mp mp mp mp mp mm mm"
+"lm mp mp mp mp mp mp mm mm"
+"lm mp mp mp mp mp mp mm mm"
+"lm mp mp mp mp mp mp mm mm" */
 
