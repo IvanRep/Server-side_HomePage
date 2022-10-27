@@ -8,9 +8,22 @@ import calculateVW from './functions/calculateVW';
 })
 export class AppComponent implements OnInit {
   title = 'HomePage';
+
+  checkTags:boolean = false;
   
   constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {
+    document.onmousedown = this.hideMenu;
+    document.oncontextmenu = () => {return false};
+  }
+
+  hideMenu() {
+    const menu = document.getElementById('contextMenu');
+    if (menu) {
+      document.body.removeChild(menu);
+      return;
+    }
+  }
 
 }

@@ -20,7 +20,17 @@ import { SearchBarComponent } from './sections/search-bar/search-bar.component';
 import { InformationPanelComponent } from './sections/information-panel/information-panel.component';
 import { MainPanelComponent } from './sections/main-panel/main-panel.component';
 import { MainMenuComponent } from './sections/main-menu/main-menu.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+import { LinksPanelComponent } from './components/links-panel/links-panel.component';
+import { NewLinkPanelComponent } from './components/new-link-panel/new-link-panel.component';
+import { LinkComponent } from './components/link/link.component';
 ;
+
+const routes:Routes = [
+  {path: 'search', component: AppComponent }
+  
+];
 
 @NgModule({
   declarations: [
@@ -42,13 +52,19 @@ import { MainMenuComponent } from './sections/main-menu/main-menu.component';
     SearchBarComponent,
     InformationPanelComponent,
     MainPanelComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    LinksPanelComponent,
+    NewLinkPanelComponent,
+    LinkComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
+  exports: [RouterModule],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })

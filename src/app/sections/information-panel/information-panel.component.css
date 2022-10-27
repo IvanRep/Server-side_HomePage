@@ -9,7 +9,7 @@ div.main {
 
 div.main>div {
     display: flex;
-    margin: auto;
+    margin-left: auto;
     margin-top: 0px;
     margin-bottom: 0px;
     
@@ -18,10 +18,18 @@ div.main>div {
     color: var(--secondary-background-color);
 }
 div.main button {
-    height: 120%;
+    height: 97%;
+    margin: 1%;
+    margin-left: 5%;
     aspect-ratio: 1 / 1;
     border-radius: 100%;
     padding: 0%;
     background-color: var(--secondary-background-color);
     border: 2px solid var(--secondary-background-color);
+}
+
+@media screen and (max-width: 800px) {
+    div.main button {
+        visibility: hidden;
+    }
 }

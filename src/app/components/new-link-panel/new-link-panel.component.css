@@ -1,0 +1,77 @@
+form {
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    /* grid-template-columns: minmax(20px, 2%) minmax(330px, 70%) minmax(120px, 28%);
+    grid-template-rows: minmax(40px, 5%) minmax(90px, 15%) minmax(500px, 80%); */
+    grid-template-columns: minmax(48.5px, 10%) minmax(48.5px, 10%) minmax(48.5px, 10%) minmax(48.5px, 10%) minmax(32.5px, 30%) minmax(118.5px, 30%);
+    grid-template-rows: minmax(50px, 10%) minmax(50px, 10%) minmax(50px, 10%) minmax(175px, 35%) minmax(175px, 35%);
+    grid-template-areas: 
+    "nm nm nm nm nm ta"
+    "ur ur ur ur ur ta"
+    "im im im im im ta"
+    "mi mi si si .  ta"
+    "sb sb sb cl .  ta";
+}
+input {
+    border: solid 2px var(--light-border-color);
+    border-radius: 15vh;
+}
+input.name {
+    grid-area: nm;
+}
+
+input.url {
+    grid-area: ur;
+}
+
+input.image {
+    grid-area: im;
+}
+
+div.mainImg {
+    grid-area: mi;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    border: solid 2px var(--light-border-color);
+    border-radius: 2vh;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+div.secondaryImg {
+    grid-area: si;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    align-self: center;
+    width: 100%;
+    max-height: min-content;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+}
+div.secondaryImg>div {
+    display: flex;
+    border: solid 2px var(--light-border-color);
+    border-radius: 2vh;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+}
+
+div.tags {
+    grid-area: ta;
+    border: solid 2px var(--light-border-color);
+    border-radius: 2vh;
+}
+
+button.submitButton {
+    grid-area: sb;
+}
+
+button.cancelButton {
+    grid-area: cl;
+    aspect-ratio: 1 / 1;
+}

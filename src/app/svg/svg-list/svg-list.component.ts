@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-svg-list',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./svg-list.component.css']
 })
 export class SvgListComponent implements OnInit {
+
+  @Input() fill:string = 'black';
 
   constructor() { }
 

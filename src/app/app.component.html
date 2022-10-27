@@ -3,12 +3,12 @@
 <!-- LEFT MENU -->
 <app-left-menu></app-left-menu>
 <!-- SEARCH BAR -->
-<app-search-bar></app-search-bar>
+<app-search-bar (setSearchWindowEmitter)="mainPanel.panel = $event"></app-search-bar>
 
 <!-- INFORMATION PANEL -->
 <app-information-panel></app-information-panel>
 <!-- MAIN PANEL -->
-<app-main-panel></app-main-panel>
+<app-main-panel #mainPanel [checkTags]="checkTags"></app-main-panel>
 
 <!-- MAIN MENU -->
-<app-main-menu></app-main-menu>
+<app-main-menu (selectTagEmitter)="checkTags = !checkTags"></app-main-menu>

@@ -11,10 +11,13 @@
     --border-color: #999999;
     --dark-border-color: #444444;
 
+    --delete-accent-color: #ff190038;
     --error-color: #FF0000;
 
 }
-
+.pointer, button {
+    cursor: pointer;
+}
 * {
     box-sizing: border-box;
     font-family: sans-serif;
@@ -52,3 +55,40 @@ app-root {
 "lm mp mp mp mp mp mp mm mm"
 "lm mp mp mp mp mp mp mm mm" */
 
+ul#contextMenu {
+    align-items: center;
+    justify-content: center;
+    margin: 0%;
+    padding: 0%;
+    width: 20%;
+    border-radius: 1vh;
+    height: max-content;
+    max-height: max-content;
+    box-shadow: 0px 0px 16px 0px rgba(0,0,0, 0.24);
+    background-color: var(--main-background-color);
+    overflow: hidden;
+}
+ul#contextMenu li {
+    cursor: pointer;
+    list-style: none;
+    text-align: left;
+    width: 100%;
+    padding: 2.5%;
+    padding-left: 4%;
+    color: var(--secondary-background-color);
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+ul#contextMenu li.separator {
+    border-bottom: 1px solid var(--border-color);
+}
+
+ul#contextMenu li:hover {
+    background-color: var(--main-accent-color);
+ 
+}
+
+ul#contextMenu li.delete:hover {
+    background-color: var(--delete-accent-color);
+}

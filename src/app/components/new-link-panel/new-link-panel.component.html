@@ -1,0 +1,15 @@
+<form [formGroup]="newLinkForm" (ngSubmit)="onSubmit()">
+    <input class="name" formControlName="name" type="text" placeholder="Nombre del link">
+    <input class="url" formControlName="url" type="text" placeholder="Url del link">
+    <input class="image" formControlName="image" type="text" placeholder="Url de la imagen">
+    <div class="mainImg"></div>
+    <div class="secondaryImg">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="tags"></div>
+    <button class="submitButton" type="submit"></button>
+    <button (click)="cancel()" class="cancelButton"></button>
+</form>

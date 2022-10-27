@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-main-panel',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPanelComponent implements OnInit {
 
-  constructor() { }
+  @Input() checkTags:boolean = false;
+  @Input() panel:string // can be 'links' , 'newLink' , 'googleSearch'
+
+  constructor() {
+    this.panel = 'links';
+  }
 
   ngOnInit(): void {
+    this.checkGoogleSearch();
+  }
+
+  checkGoogleSearch() {
+    let url = window.location.href;
+    if (url.split('/')[3].startsWith('search') || url.split('/')[3].startsWith('#gsc'))
+      this.panel = 'googleSearch'
   }
 
 }

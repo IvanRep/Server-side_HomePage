@@ -2,18 +2,14 @@
     <button>
       <app-svg-tags></app-svg-tags>
     </button>
-    <input type="search" placeholder="Filtrar Etiquetas" />
+    <input type="search" placeholder="Filtrar Etiquetas" (input)="filterTags(inputFilter.value)" #inputFilter/>
 </div>
 <ul>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
-    <li>Etiqueta</li>
+    <li [id]="'tag'+tag.id" class="cursor" *ngFor="let tag of filteredTags" 
+      [ngClass]="{'selected': tag.selected}" 
+      (mousedown)="selectTag($event,tag)"
+    >
+        <div #tagDiv [id]="'tagdiv'+tag.id" [contentEditable]="tag.editable" (blur)="saveTag(tag,inputFilter.value)" (keyup)="discardTag($event,tag)" tabindex="1">{{tag.name}}</div>
+        <button *ngIf="tag.editable" (click)="saveTag(tag,inputFilter.value)" ><app-svg-tags [fillColor]="'white'"></app-svg-tags></button>
+    </li>
 </ul>

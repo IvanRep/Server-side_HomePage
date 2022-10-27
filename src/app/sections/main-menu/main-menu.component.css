@@ -36,10 +36,16 @@ ul {
     overflow-y: auto;
 }
 li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: auto;
     list-style: none;
     text-align: center;
     width: 65%;
+    max-width: 65%;
+    overflow: hidden;
+    height: 7.5%;
     border-radius: 15vw;
     padding: 2.5%;
     background-color: var(--secondary-accent-color);
@@ -48,7 +54,32 @@ li {
     border-bottom: 3px solid var(--border-color);
     margin-top: 6%;
     margin-bottom: 6%;
+}
+li div {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    border: none;
+    text-overflow: ellipsis;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 
+li.selected {
+    border-color: var(--accent-color);
+}
+
+li button {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 0%;
+    background: none;
+    border: none;
+    transform: scaleX(-1);
+    margin-left: auto;
 }
 
 /* MAIN MENU SROLL BAR */

@@ -1,36 +1,11 @@
-div.link {
-    display: flex;
+app-links-panel {
+    height: 100%;
+    max-height: 100%;
+}
+
+app-new-link-panel {
+    height: 100%;
+    max-height: 100%;
     width: 100%;
-    height: max(40px,7%);
-    padding-left: 6%;
-    margin-top: 2%;
-}
-
-div.link>div {
-    display: flex;
-    align-items: center;
-    width: 60%;
-    padding: .2%;
-    border: solid 2px var(--light-border-color);
-    border-radius: 15vw;
-}
-
-/* Link Logo */
-div.link>div>div {
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    border: 2px solid var(--light-border-color);
-    border-radius: 100%;
-    margin-left: 1%;
-    margin-right: 5%;
-}
-
-div.link button {
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 15vw;
-    padding: .7%;
-    border: 2px solid var(--light-border-color);
-    margin-left: 1%;
-    background-color: var(--main-background-color);
+    max-width: 100%;
 }

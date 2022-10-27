@@ -1,0 +1,13 @@
+<div class="pointer link" [ngClass]="{ 'hovered' : linkHover }" (mousedown)="onClick($event,link.url)" (mouseenter)="colorHover(true,0)" (mouseleave)="colorHover(false, 0)">
+    <div><img [src]="link.imageUrl" alt="Link logo" /></div>
+    {{link.name}}
+</div>
+<button [ngClass]="{ 'hovered' : linkHover }" (mouseenter)="colorHover(true,0)" (mouseleave)="colorHover(false, 0)" (mousedown)="onClick($event,link.url)">
+    <app-svg-link [fill]="buttonsColor[0]"></app-svg-link>
+</button>
+<button (mouseenter)="colorHover(true,1)" (mouseleave)="colorHover(false,1)" (mousedown)="openNewTab(link.url)">
+    <app-svg-new-tab [fill]="buttonsColor[1]"></app-svg-new-tab>
+</button>
+<button (mouseenter)="colorHover(true,2)" (mouseleave)="colorHover(false,2)"  (mousedown)="copyUrl(link.url)">
+    <app-svg-copy-link [fill]="buttonsColor[2]" ></app-svg-copy-link>
+</button>

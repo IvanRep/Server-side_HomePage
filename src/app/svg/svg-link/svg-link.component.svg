@@ -1,4 +1,5 @@
 <svg
+   [attr.fill]="fill"
    id="Layer_1"
    data-name="Layer 1"
    viewBox="0 0 24 24"

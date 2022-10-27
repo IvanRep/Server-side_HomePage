@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-svg-double-list',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./svg-double-list.component.css']
 })
 export class SvgDoubleListComponent implements OnInit {
+
+  @Input() fill:string = 'black';
 
   constructor() { }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-svg-upload',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./svg-upload.component.css']
 })
 export class SvgUploadComponent implements OnInit {
+
+  @Input() fill:string = 'black';
 
   constructor() { }
 
