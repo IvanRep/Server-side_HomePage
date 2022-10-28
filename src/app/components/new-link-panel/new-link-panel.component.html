@@ -10,7 +10,7 @@
         <div></div>
     </div>
     <div class="tags">
-        <div class="tag" *ngFor="let tag of link.tags" (click)="removeTag(tag)">
+        <div class="tag pointer" *ngFor="let tag of link.tags" (click)="removeTag(tag)">
             {{tag.name}}
         </div>
     </div>

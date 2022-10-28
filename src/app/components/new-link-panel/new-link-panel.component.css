@@ -99,6 +99,9 @@ div.tags div.tag {
     margin-top: 6%;
     margin-bottom: 6%;
 }
+div.tags div.tag:hover {
+    background-color: var(--border-color);
+}
 
 button.submitButton {
     grid-area: sb;

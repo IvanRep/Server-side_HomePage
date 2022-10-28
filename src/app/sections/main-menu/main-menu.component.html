@@ -5,7 +5,7 @@
     <input type="search" placeholder="Filtrar Etiquetas" (input)="filterTags(inputFilter.value)" #inputFilter/>
 </div>
 <ul>
-    <li [id]="'tag'+tag.id" class="cursor" *ngFor="let tag of filteredTags" 
+    <li [id]="'tag'+tag.id" class="pointer" *ngFor="let tag of filteredTags" 
       [ngClass]="{'selected': tag.selected}" 
       (mousedown)="selectTag($event,tag)"
     >

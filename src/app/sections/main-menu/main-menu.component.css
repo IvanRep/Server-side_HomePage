@@ -55,6 +55,9 @@ li {
     margin-top: 6%;
     margin-bottom: 6%;
 }
+li:hover {
+    background-color: var(--border-color);
+}
 li div {
     display: flex;
     width: 100%;
