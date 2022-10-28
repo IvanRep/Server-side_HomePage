@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   title = 'HomePage';
 
   checkTags:boolean = false;
+  panel:string = 'links';
   
   constructor() {}
 

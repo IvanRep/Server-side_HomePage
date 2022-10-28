@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-main-panel',
@@ -8,7 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MainPanelComponent implements OnInit {
 
   @Input() checkTags:boolean = false;
-  @Input() panel:string // can be 'links' , 'newLink' , 'googleSearch'
+  @Input() panel:string;// can be 'links' , 'newLink' , 'googleSearch'
+
+  @Output() changePanelEmitter:EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {
     this.panel = 'links';
@@ -22,6 +24,11 @@ export class MainPanelComponent implements OnInit {
     let url = window.location.href;
     if (url.split('/')[3].startsWith('search') || url.split('/')[3].startsWith('#gsc'))
       this.panel = 'googleSearch'
+  }
+
+  changePanel(panel:string) {
+    this.panel = panel;
+    this.changePanelEmitter.emit(panel);    
   }
 
 }

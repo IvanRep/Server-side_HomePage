@@ -16,24 +16,27 @@ export class LinksPanelComponent implements OnInit, OnChanges {
   filteredLinks:Link[]
 
   constructor(private linksService:LinksServiceService) {
+    this.newLinkEmitter = new EventEmitter<string>();
     this.filteredLinks = [];
   }
 
   ngOnInit(): void {
     this.filterLinks();
 
-    document.querySelector('app-main-panel')?.addEventListener('mousedown', (ev:any) => {
+    document.querySelector('app-links-panel')?.addEventListener('mousedown', (ev:any) => {
       this.openGeneralLinksOptions(ev)});
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.linksService.selectedFilterTags)
+    console.log('NewLinkTags')
+    console.log(this.linksService.selectedNewLinkTags)
     this.filterLinks();
-    console.log(changes)
   }
 
   filterLinks() {
     // if no tag is selected, all links are added to the filteredLinks
-    if (this.linksService.selectedTags.length === 0) {
+    if (this.linksService.selectedFilterTags.length === 0) {
       this.filteredLinks = this.linksService.links.slice();
       return;
     }
@@ -41,11 +44,12 @@ export class LinksPanelComponent implements OnInit, OnChanges {
     // if not, clear the array and add the links that contain at least one selected Tag 
     this.filteredLinks = [];
     this.linksService.links.forEach((link:Link) => {
-      link.tags.forEach((tag:Tag) => {
-        if (this.linksService.selectedTags.includes(tag)) {
+      for (let tag of link.tags) {
+        if (this.linksService.selectedFilterTags.includes(tag)) {
           this.filteredLinks.push(link);
+          break;
         }
-      });
+      }
     });
   }
 
@@ -68,7 +72,7 @@ export class LinksPanelComponent implements OnInit, OnChanges {
       //New Link
       const li = document.createElement('li');
       li.textContent = 'Nuevo Link';
-      li.onmousedown = ()=>{ this.newLinkEmitter.emit('newLink')};
+      li.onmousedown = (event)=>{ console.log('ejecutando'); this.newLinkEmitter.emit('newLink')};
       ul.appendChild(li);
       
       document.body.appendChild(ul);

@@ -8,7 +8,7 @@
 <!-- INFORMATION PANEL -->
 <app-information-panel></app-information-panel>
 <!-- MAIN PANEL -->
-<app-main-panel #mainPanel [checkTags]="checkTags"></app-main-panel>
+<app-main-panel #mainPanel [checkTags]="checkTags" (changePanelEmitter)="panel = $event"></app-main-panel>
 
 <!-- MAIN MENU -->
-<app-main-menu (selectTagEmitter)="checkTags = !checkTags"></app-main-menu>
+<app-main-menu (selectTagEmitter)="checkTags = !checkTags" [panel]="panel" ></app-main-menu>

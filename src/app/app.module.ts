@@ -25,6 +25,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LinksPanelComponent } from './components/links-panel/links-panel.component';
 import { NewLinkPanelComponent } from './components/new-link-panel/new-link-panel.component';
 import { LinkComponent } from './components/link/link.component';
+import { CreateLinkSvgComponent } from './svg/create-link-svg/create-link-svg.component';
+import { CrossSvgComponent } from './svg/cross-svg/cross-svg.component';
 ;
 
 const routes:Routes = [
@@ -55,7 +57,9 @@ const routes:Routes = [
     MainMenuComponent,
     LinksPanelComponent,
     NewLinkPanelComponent,
-    LinkComponent
+    LinkComponent,
+    CreateLinkSvgComponent,
+    CrossSvgComponent
   ],
   imports: [
     BrowserModule,

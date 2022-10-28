@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import Tag from 'src/app/model/Tag.model';
 import { LinksServiceService } from 'src/app/services/links-service/links-service.service';
 
@@ -7,13 +7,43 @@ import { LinksServiceService } from 'src/app/services/links-service/links-servic
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.css']
 })
-export class MainMenuComponent implements OnInit {
+export class MainMenuComponent implements OnInit, OnChanges {
+
+  @Input() panel = "links";
 
   @Output() selectTagEmitter:EventEmitter<void> = new EventEmitter<void>();
   filteredTags:Tag[]
+  selectedTags:Tag[];
 
   constructor(private linksService:LinksServiceService) { 
     this.filteredTags = linksService.tags.slice();
+    this.selectedTags = this.linksService.selectedFilterTags;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.panel.currentValue === changes.panel.previousValue) return;
+    
+    //If the active main panel is newLink the tags will be stored in selectedNewLinkTags to add them to the new link.
+    if (changes.panel.currentValue === "newLink") {
+      console.log('changesNL')
+      this.linksService.selectedNewLinkTags = [];
+      this.selectedTags = this.linksService.selectedNewLinkTags;
+      this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
+        tag.selected = false;
+      });
+
+    //Otherwise the menu will be used to filter the links by the tags selected in selectedFilterTags.
+    } 
+    if (changes.panel.currentValue === "links") {
+      console.log('changesLinks')
+      this.selectedTags = this.linksService.selectedFilterTags;
+      this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
+        tag.selected = true;
+      });
+      this.linksService.selectedNewLinkTags.forEach( (tag:Tag) => {
+        tag.selected = false;
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -39,21 +69,22 @@ export class MainMenuComponent implements OnInit {
     }
 
     //If the control key is not press it clear the selected Tags
-    if (!event.ctrlKey) {
-      this.linksService.selectedTags.forEach((value:Tag) => {
+    if (!event.ctrlKey && this.panel === 'links') {
+      this.selectedTags.forEach((value:Tag) => {
         value.selected = false;
       });
-      this.linksService.selectedTags = [];
+      this.selectedTags.length = 0;
     }
     //If the tag exists in the array it delete it ,else it add it
-    let tagIndex = this.linksService.selectedTags.indexOf(tag);
+    let tagIndex = this.selectedTags.indexOf(tag);
     if (tagIndex === -1) {
-      this.linksService.selectedTags.push(tag);
+      this.selectedTags.push(tag);
       tag.selected = true;
     } else {
-      this.linksService.selectedTags.splice(tagIndex,1);
+      this.selectedTags.splice(tagIndex,1);
       tag.selected = false;
     }
+    
     this.selectTagEmitter.emit();
   }
 
@@ -217,9 +248,9 @@ export class MainMenuComponent implements OnInit {
       if (index !== -1)
         this.linksService.tags.splice(index);
     
-      index = this.linksService.selectedTags.indexOf(tag);
+      index = this.selectedTags.indexOf(tag);
       if (index !== -1)
-        this.linksService.selectedTags.splice(index);
+        this.selectedTags.splice(index);
     }
 
       //DELETE TAG API !!!!!!!!

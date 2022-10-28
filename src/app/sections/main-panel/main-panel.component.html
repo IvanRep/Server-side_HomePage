@@ -1,8 +1,8 @@
 <ng-container [ngSwitch]="panel">
 
-    <app-links-panel *ngSwitchCase="'links'" [checkTags]="checkTags" (newLinkEmitter)="panel = $event" ></app-links-panel>
+    <app-links-panel *ngSwitchCase="'links'" [checkTags]="checkTags" (newLinkEmitter)="changePanel($event)" ></app-links-panel>
     <div *ngSwitchCase="'googleSearch'" class="gcse-searchresults-only" style="max-width: 100%; width: 100%;"></div>
-    <app-new-link-panel *ngSwitchCase="'newLink'" (exitPanelEmitter)="panel = $event"></app-new-link-panel>
+    <app-new-link-panel *ngSwitchCase="'newLink'" (exitPanelEmitter)="changePanel($event)"></app-new-link-panel>
 
 </ng-container>
 <!-- MAIN PANEL - IFRAME -->
