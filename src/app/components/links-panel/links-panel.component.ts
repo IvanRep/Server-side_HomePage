@@ -13,6 +13,7 @@ export class LinksPanelComponent implements OnInit, OnChanges {
 
   @Input() checkTags:boolean = false;
   @Output() newLinkEmitter:EventEmitter<string> = new EventEmitter<string>();
+  @Output() editLinkEmitter:EventEmitter<Link> = new EventEmitter<Link>();
   filteredLinks:Link[]
 
   constructor(private linksService:LinksServiceService) {
@@ -28,9 +29,6 @@ export class LinksPanelComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.linksService.selectedFilterTags)
-    console.log('NewLinkTags')
-    console.log(this.linksService.selectedNewLinkTags)
     this.filterLinks();
   }
 
@@ -72,7 +70,7 @@ export class LinksPanelComponent implements OnInit, OnChanges {
       //New Link
       const li = document.createElement('li');
       li.textContent = 'Nuevo Link';
-      li.onmousedown = (event)=>{ console.log('ejecutando'); this.newLinkEmitter.emit('newLink')};
+      li.onmousedown = (event)=>{ this.newLinkEmitter.emit('newLink')};
       ul.appendChild(li);
       
       document.body.appendChild(ul);
@@ -85,6 +83,74 @@ export class LinksPanelComponent implements OnInit, OnChanges {
         ul.style.top = (window.innerHeight - (ul.clientHeight + 10)) + 'px';
       }
     }
+  }
+
+
+  openOneLinkOptions(event:MouseEvent,link:Link) {
+    event.stopPropagation();
+    //Close ContextMenu if it is open
+    const settings = document.getElementById('contextMenu');
+    if (settings) {
+      document.body.removeChild(settings);
+      return;
+    }
+    if (event.button !== 2) return;
+
+    //Create ContextMenu
+    const ul = document.createElement('ul');
+    ul.id = 'contextMenu';
+    ul.style.position = 'absolute';
+    ul.style.display = 'block';
+    ul.style.top = event.clientY + 'px';
+    ul.style.left = event.clientX + 'px';
+
+    //Edit Link
+    let li = document.createElement('li');
+    li.textContent = 'Editar Link';
+    li.onmousedown = (event)=>{ this.editLinkEmitter.emit(link) };
+    ul.appendChild(li);
+
+    //Delete Link
+    li = document.createElement('li');
+    li.textContent = 'Eliminar Link';
+    li.classList.add('delete');
+    li.classList.add('separator');
+    li.onmousedown = (event)=>{ this.deleteLink(event, link) };
+    ul.appendChild(li);
+
+    //New Link
+    li = document.createElement('li');
+    li.textContent = 'Nueva Link';
+    li.onmousedown = (event)=>{ this.newLinkEmitter.emit('newLink') };
+    ul.appendChild(li);
+    
+    document.body.appendChild(ul);
+
+    //Prevents contextMenu from exiting the screen 
+    if (ul.clientWidth + ul.offsetLeft > window.innerWidth) {
+    ul.style.left = (window.innerWidth - (ul.clientWidth + 10)) + 'px';
+    }
+    if (ul.clientHeight + ul.offsetTop > window.innerHeight) {
+      ul.style.top = (window.innerHeight - (ul.clientHeight + 10)) + 'px';
+    }
+  }
+
+  deleteLink(event:MouseEvent, link:Link) {
+    event.preventDefault();
+    if (event.button !== 0) return;
+    
+    let index = this.filteredLinks.indexOf(link);
+    if (index !== -1)
+      this.filteredLinks.splice(index);
+    
+    index = this.linksService.links.indexOf(link);
+    if (index !== -1) {
+      this.linksService.links.splice(index);
+
+      this.linksService.saveLocalLinks() // SAVE LINKS lOCAL
+    }
+    
+    //DELETE LINK API !!!!!!!!
   }
 
 }

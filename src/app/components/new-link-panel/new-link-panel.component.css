@@ -43,12 +43,12 @@ div.mainImg {
     grid-area: mi;
     display: flex;
     align-self: center;
-    justify-self: center;
     border: solid 2px var(--light-border-color);
     border-radius: 2vh;
     width: 90%;
     aspect-ratio: 1 / 1;
     margin-top: 5%;
+    overflow: hidden;
 }
 
 div.secondaryImg {
@@ -71,6 +71,7 @@ div.secondaryImg>div {
     aspect-ratio: 1 / 1;
     width: 80%;
     margin: 10%;
+    overflow: hidden;
 }
 
 div.tags {

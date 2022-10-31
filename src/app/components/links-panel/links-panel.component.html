@@ -1,2 +1,2 @@
-<app-link *ngFor="let link of filteredLinks" [link]="link" ></app-link>
+<app-link *ngFor="let link of filteredLinks" [link]="link" (mousedown)="openOneLinkOptions($event,link)" ></app-link>
 

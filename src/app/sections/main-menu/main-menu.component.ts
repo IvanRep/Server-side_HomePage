@@ -25,8 +25,6 @@ export class MainMenuComponent implements OnInit, OnChanges {
     
     //If the active main panel is newLink the tags will be stored in selectedNewLinkTags to add them to the new link.
     if (changes.panel.currentValue === "newLink") {
-      console.log('changesNL')
-      this.linksService.selectedNewLinkTags = [];
       this.selectedTags = this.linksService.selectedNewLinkTags;
       this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
         tag.selected = false;
@@ -35,7 +33,6 @@ export class MainMenuComponent implements OnInit, OnChanges {
     //Otherwise the menu will be used to filter the links by the tags selected in selectedFilterTags.
     } 
     if (changes.panel.currentValue === "links") {
-      console.log('changesLinks')
       this.selectedTags = this.linksService.selectedFilterTags;
       this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
         tag.selected = true;
@@ -84,7 +81,7 @@ export class MainMenuComponent implements OnInit, OnChanges {
       this.selectedTags.splice(tagIndex,1);
       tag.selected = false;
     }
-    
+
     this.selectTagEmitter.emit();
   }
 
@@ -181,14 +178,15 @@ export class MainMenuComponent implements OnInit, OnChanges {
 
   createTag(event:MouseEvent, tags:Tag[]) {
     event.preventDefault();
-    if (event.button === 0) {
-      const id = tags[tags.length-1].id+1;
-      tags.push(new Tag(id,'',false,false,true));
+    if (event.button !== 0) return;
 
-      setTimeout(() => {
-        const div = (<HTMLDivElement>document.querySelector('div#tagdiv'+id));
-        div.focus()});
-    }
+
+    const id = tags.length>0 ? tags[tags.length-1].id+1 : 0;
+    tags.push(new Tag(id,'',false,false,true));
+
+    setTimeout(() => {
+      const div = (<HTMLDivElement>document.querySelector('div#tagdiv'+id));
+      div.focus()});
   }
 
   editTag(event:MouseEvent, tag:Tag) {
@@ -219,7 +217,9 @@ export class MainMenuComponent implements OnInit, OnChanges {
         this.linksService.tags.push(tag);
         //SAVE TAG API !!!!!!!
       }
-      
+
+      this.linksService.saveLocalTags() // SAVE TAGS lOCAL
+
       this.filterTags(filter);
     }
 
@@ -239,21 +239,24 @@ export class MainMenuComponent implements OnInit, OnChanges {
 
   deleteTag(event:MouseEvent, tag:Tag) {
     event.preventDefault();
-    if (event.button === 0) {
-      let index = this.filteredTags.indexOf(tag);
-      if (index !== -1)
-        this.filteredTags.splice(index);
-      
-      index = this.linksService.tags.indexOf(tag);
-      if (index !== -1)
-        this.linksService.tags.splice(index);
+    if (event.button !== 0) return;
     
-      index = this.selectedTags.indexOf(tag);
-      if (index !== -1)
-        this.selectedTags.splice(index);
-    }
-
-      //DELETE TAG API !!!!!!!!
+    let index = this.filteredTags.indexOf(tag);
+    if (index !== -1)
+      this.filteredTags.splice(index);
+    
+    index = this.linksService.tags.indexOf(tag);
+    if (index !== -1)
+      this.linksService.tags.splice(index);
+  
+    index = this.selectedTags.indexOf(tag);
+    if (index !== -1)
+      this.selectedTags.splice(index);
+    
+    this.linksService.saveLocalTags() // SAVE TAGS lOCAL
+    this.linksService.saveLocalLinks() // SAVE LINKS lOCAL
+    //DELETE TAGS OF LINKS
+    //DELETE TAG API !!!!!!!!
   }
 
   setDefaultTag(event:MouseEvent, tag:Tag) {
@@ -267,6 +270,7 @@ export class MainMenuComponent implements OnInit, OnChanges {
       
       tag.selectedByDefault = true;
 
+      this.linksService.saveLocalTags() // SAVE TAGS lOCAL
       //SET DEFAULT TAG API !!!!!!
       //CHANGE OLD DEFAULT TAG API !!!!!
 

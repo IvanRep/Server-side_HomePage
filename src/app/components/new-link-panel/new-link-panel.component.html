@@ -1,13 +1,13 @@
 <form [formGroup]="newLinkForm" (ngSubmit)="onSubmit()">
     <input class="name" formControlName="name" type="text" placeholder="Nombre del link">
-    <input class="url" formControlName="url" type="text" placeholder="Url del link">
-    <input class="image" formControlName="image" type="text" placeholder="Url de la imagen">
-    <div class="mainImg"></div>
+    <input #urlInput class="url" formControlName="url" type="text" placeholder="Url del link" (input)="getLinkImages()">
+    <input #imageInput class="image" formControlName="image" type="text" placeholder="Url de la imagen" (input)="getMainImagePreview()" >
+    <div class="mainImg" #mainImg ></div>
     <div class="secondaryImg">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div #img1 class="pointer" (click)="setMainImg(img1.title)"></div>
+        <div #img2 class="pointer" (click)="setMainImg(img2.title)"></div>
+        <div #img3 class="pointer" (click)="setMainImg(img3.title)"></div>
+        <div #img4 class="pointer" ></div>
     </div>
     <div class="tags">
         <div class="tag pointer" *ngFor="let tag of link.tags" (click)="removeTag(tag)">
