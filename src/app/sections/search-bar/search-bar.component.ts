@@ -24,6 +24,19 @@ export class SearchBarComponent implements OnInit {
       this.searchForm.setValue({search: url.substring(url.indexOf('q=')+2).replace(/&[A-z=.&0-9]*/,''), languageCode: 'es'});
   }
 
+  newTabSearch(event:KeyboardEvent) {
+    if (!event.ctrlKey || event.key !== 'Enter' ) return
+
+    let win = window.open('https://www.google.com/search?q='+this.searchForm.value.search, '_blank');
+  }
+
+  cancelSearch() {
+    if (this.searchForm.value.search.length !== 0) return;
+
+    location.href = location.href.split('#')[0]
+    this.setSearchWindowEmitter.emit('links');
+  }
+
   onSubmit() {
     console.warn(this.searchForm.value);
     this.router.navigate(['search'],{ queryParams: { q: this.searchForm.value.search, page: 1, tab: 0}, });

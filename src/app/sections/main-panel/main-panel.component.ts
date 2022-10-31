@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import Link from 'src/app/model/Link.model';
 
 @Component({
@@ -6,7 +6,7 @@ import Link from 'src/app/model/Link.model';
   templateUrl: './main-panel.component.html',
   styleUrls: ['./main-panel.component.css']
 })
-export class MainPanelComponent implements OnInit {
+export class MainPanelComponent implements OnInit, OnChanges {
 
   @Input() checkTags:boolean = false;
   @Input() panel:string;// can be 'links' , 'newLink' , 'googleSearch'
@@ -18,6 +18,10 @@ export class MainPanelComponent implements OnInit {
 
   constructor() {
     this.panel = 'links';
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.panel)
   }
 
   ngOnInit(): void {

@@ -3,7 +3,7 @@
     <button class="engine-button" type="submit" tabindex="-1">
         
     </button>
-    <input formControlName="search" type="text" name="q"  maxlength="255" autocomplete="off" title="Búsqueda en Google" placeholder="Búsqueda en Google"  #queryInput>
+    <input (input)="cancelSearch()" (keydown)="newTabSearch($event)" formControlName="search" type="search" name="q"  maxlength="255" autocomplete="off" title="Búsqueda en Google" placeholder="Búsqueda en Google"  #queryInput>
     <input formControlName="languageCode" type="hidden" name="hl" value="es">
     <button class="search-button" type="submit" name="btnG" title="Buscar con Google" tabindex="-1">
             <app-magnifier></app-magnifier>
