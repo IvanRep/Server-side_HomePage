@@ -107,6 +107,7 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
     let url = (<HTMLInputElement> this.imageInput.nativeElement).value.trim();
     let mainImg = (<HTMLDivElement>this.mainImgDiv.nativeElement);
     mainImg.innerHTML = '';
+    mainImg.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--main-background-color');
 
     if (url.length === 0) return;
 
@@ -120,7 +121,6 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
       }
       mainImg.style.backgroundColor = url;
     } else {
-      mainImg.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--main-background-color');
       const img = document.createElement('img');
       img.src = url;
       img.style.height = '100%';

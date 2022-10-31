@@ -1,7 +1,13 @@
-<div class="pointer link" [ngClass]="{ 'hovered' : linkHover }" (mousedown)="onClick($event,link.url)" (mouseenter)="colorHover(true,0)" (mouseleave)="colorHover(false, 0)">
+<div *ngIf="!link.imageUrl.startsWith('#') else colorLink" class="pointer link" [ngClass]="{ 'hovered' : linkHover }" (mousedown)="onClick($event,link.url)" (mouseenter)="colorHover(true,0)" (mouseleave)="colorHover(false, 0)">
     <div><img [src]="link.imageUrl" alt="Link logo" /></div>
     {{link.name}}
 </div>
+<ng-template #colorLink>
+    <div class="pointer link" [ngClass]="{ 'hovered' : linkHover }" (mousedown)="onClick($event,link.url)" (mouseenter)="colorHover(true,0)" (mouseleave)="colorHover(false, 0)">
+        <div style="background-color: {{link.imageUrl}}"></div>
+        {{link.name}}
+    </div>
+</ng-template>
 <button [ngClass]="{ 'hovered' : linkHover }" (mouseenter)="colorHover(true,0)" (mouseleave)="colorHover(false, 0)" (mousedown)="onClick($event,link.url)">
     <app-svg-link [fill]="buttonsColor[0]"></app-svg-link>
 </button>

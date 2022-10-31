@@ -7,7 +7,7 @@
         <div #img1 class="pointer" (click)="setMainImg(img1.title)"></div>
         <div #img2 class="pointer" (click)="setMainImg(img2.title)"></div>
         <div #img3 class="pointer" (click)="setMainImg(img3.title)"></div>
-        <div #img4 class="pointer" ></div>
+        <div #img4 class="pointer" ><input #clpk class="colorpicker pointer" type="color" value="#205585" (input)="setMainImg(clpk.value)" ></div>
     </div>
     <div class="tags">
         <div class="tag pointer" *ngFor="let tag of link.tags" (click)="removeTag(tag)">
