@@ -38,6 +38,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.searchForm.value.search.length === 0) return;
     console.warn(this.searchForm.value);
     this.router.navigate(['search'],{ queryParams: { q: this.searchForm.value.search, page: 1, tab: 0}, });
     

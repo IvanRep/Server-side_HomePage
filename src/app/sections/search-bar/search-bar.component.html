@@ -1,7 +1,7 @@
 
 <form method="get" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <button class="engine-button" type="submit" tabindex="-1">
-        
+        <img src="https://www.google.com/favicon.ico" />
     </button>
     <input (input)="cancelSearch()" (keydown)="newTabSearch($event)" formControlName="search" type="search" name="q"  maxlength="255" autocomplete="off" title="Búsqueda en Google" placeholder="Búsqueda en Google"  #queryInput>
     <input formControlName="languageCode" type="hidden" name="hl" value="es">

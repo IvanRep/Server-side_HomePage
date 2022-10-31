@@ -21,6 +21,7 @@ input {
 button.engine-button {
     min-width: 45px;
     width: 5%;
+
     min-height: 20px;
     height: 45%;
 
@@ -29,6 +30,13 @@ button.engine-button {
     border-right: none;
     border-top-left-radius: 15vw;
     border-bottom-left-radius: 15vw;
+}
+
+button.engine-button img {
+    height: 80%;
+    border: 1px solid var(--light-border-color);
+    border-radius: 100%;
+    aspect-ratio: 1 / 1;
 }
 button.search-button {
     min-width: 45px;

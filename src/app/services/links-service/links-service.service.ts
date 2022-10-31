@@ -38,7 +38,13 @@ export class LinksServiceService {
 
   loadData(links:any, tags:any) {
     for (let tag of tags) {
-      this.tags.push(new Tag(tag.id,tag.name,tag.selectedByDefault,false,false,tag.creationDate));
+      const currentTag = new Tag(tag.id,tag.name,tag.selectedByDefault,false,false,tag.creationDate);
+      if (currentTag.selectedByDefault) {
+        currentTag.selected = true;
+        this.selectedFilterTags.push(currentTag);
+      }
+      this.tags.push(currentTag);
+
     }
     for (let link of links) {
       let selectedTags = [];
