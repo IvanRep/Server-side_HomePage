@@ -4,7 +4,7 @@
 </div>
 <ng-template #colorLink>
     <div class="pointer link" [ngClass]="{ 'hovered' : linkHover }" (mousedown)="onClick($event,link.url)" (mouseenter)="colorHover(true,0)" (mouseleave)="colorHover(false, 0)">
-        <div style="background-color: {{link.imageUrl}}"></div>
+        <div [style]="'background-color:' + link.imageUrl"></div>
         {{link.name}}
     </div>
 </ng-template>
