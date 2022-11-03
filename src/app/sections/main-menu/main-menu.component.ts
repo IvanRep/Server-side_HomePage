@@ -10,6 +10,7 @@ import { LinksServiceService } from 'src/app/services/links-service/links-servic
 export class MainMenuComponent implements OnInit, OnChanges {
 
   @Input() panel = "links";
+  @Input() reload = false;
 
   @Output() selectTagEmitter:EventEmitter<void> = new EventEmitter<void>();
   filteredTags:Tag[]
@@ -21,26 +22,32 @@ export class MainMenuComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.panel.currentValue === changes.panel.previousValue) return;
-    
-    //If the active main panel is newLink the tags will be stored in selectedNewLinkTags to add them to the new link.
-    if (changes.panel.currentValue === "newLink") {
-      this.selectedTags = this.linksService.selectedNewLinkTags;
-      this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
-        tag.selected = false;
-      });
+    if (changes.panel && changes.panel.currentValue !== changes.panel.previousValue) {
+        //If the active main panel is newLink the tags will be stored in selectedNewLinkTags to add them to the new link.
+      if (changes.panel.currentValue === "newLink") {
+        this.selectedTags = this.linksService.selectedNewLinkTags;
+        this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
+          tag.selected = false;
+        });
 
-    //Otherwise the menu will be used to filter the links by the tags selected in selectedFilterTags.
-    } 
-    if (changes.panel.currentValue === "links") {
-      this.selectedTags = this.linksService.selectedFilterTags;
-      this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
-        tag.selected = true;
-      });
-      this.linksService.selectedNewLinkTags.forEach( (tag:Tag) => {
-        tag.selected = false;
-      });
+      //Otherwise the menu will be used to filter the links by the tags selected in selectedFilterTags.
+      } 
+      if (changes.panel.currentValue === "links") {
+        this.selectedTags = this.linksService.selectedFilterTags;
+        this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
+          tag.selected = true;
+        });
+        this.linksService.selectedNewLinkTags.forEach( (tag:Tag) => {
+          tag.selected = false;
+        });
+      }
     }
+    console.log(changes)
+    if (changes.reload.currentValue !== changes.reload.previousValue) {
+      this.filterTags('');
+    }
+    
+    
   }
 
   ngOnInit(): void {
@@ -103,7 +110,8 @@ export class MainMenuComponent implements OnInit, OnChanges {
 
     //Set tag as default tag
     let li = document.createElement('li');
-    li.textContent = 'Etiqueta por Defecto';
+    li.textContent = tag.selectedByDefault ? 'Deseleccionar por Defecto' : 'Etiqueta por Defecto';
+    if (tag.selectedByDefault) li.classList.add('delete');
     li.classList.add('separator');
     li.onmousedown = (event)=>{ this.setDefaultTag(event, tag) };
     ul.appendChild(li);
@@ -243,15 +251,15 @@ export class MainMenuComponent implements OnInit, OnChanges {
     
     let index = this.filteredTags.indexOf(tag);
     if (index !== -1)
-      this.filteredTags.splice(index);
+      this.filteredTags.splice(index,1);
     
     index = this.linksService.tags.indexOf(tag);
     if (index !== -1)
-      this.linksService.tags.splice(index);
+      this.linksService.tags.splice(index,1);
   
     index = this.selectedTags.indexOf(tag);
     if (index !== -1)
-      this.selectedTags.splice(index);
+      this.selectedTags.splice(index,1);
     
     this.linksService.saveLocalTags() // SAVE TAGS lOCAL
     this.linksService.saveLocalLinks() // SAVE LINKS lOCAL
@@ -261,20 +269,24 @@ export class MainMenuComponent implements OnInit, OnChanges {
 
   setDefaultTag(event:MouseEvent, tag:Tag) {
     event.preventDefault();
-    if (event.button === 0) {
-      
+    if (event.button !== 0) return;
+    
+    if (tag.selectedByDefault) {
       this.linksService.tags.forEach( (value) => {
         if (value.selectedByDefault)
           value.selectedByDefault = false;
       });
-      
-      tag.selectedByDefault = true;
+    } else {
+      this.linksService.tags.forEach( (value) => {
+        if (value.selectedByDefault)
+          value.selectedByDefault = false;
+      });
 
+      tag.selectedByDefault = true;
+    }
+    
       this.linksService.saveLocalTags() // SAVE TAGS lOCAL
       //SET DEFAULT TAG API !!!!!!
       //CHANGE OLD DEFAULT TAG API !!!!!
-
-    }
-
   }
 }

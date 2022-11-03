@@ -11,6 +11,7 @@ import { LinksServiceService } from 'src/app/services/links-service/links-servic
 })
 export class LinksPanelComponent implements OnInit, OnChanges {
 
+  @Input() reload:boolean = false;
   @Input() checkTags:boolean = false;
   @Output() newLinkEmitter:EventEmitter<string> = new EventEmitter<string>();
   @Output() editLinkEmitter:EventEmitter<Link> = new EventEmitter<Link>();
@@ -141,11 +142,11 @@ export class LinksPanelComponent implements OnInit, OnChanges {
     
     let index = this.filteredLinks.indexOf(link);
     if (index !== -1)
-      this.filteredLinks.splice(index);
+      this.filteredLinks.splice(index,1);
     
     index = this.linksService.links.indexOf(link);
     if (index !== -1) {
-      this.linksService.links.splice(index);
+      this.linksService.links.splice(index,1);
 
       this.linksService.saveLocalLinks() // SAVE LINKS lOCAL
     }

@@ -8,6 +8,7 @@ import Link from 'src/app/model/Link.model';
 })
 export class MainPanelComponent implements OnInit, OnChanges {
 
+  @Input() reload:boolean = false;
   @Input() checkTags:boolean = false;
   @Input() panel:string;// can be 'links' , 'newLink' , 'googleSearch'
 
@@ -21,7 +22,6 @@ export class MainPanelComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.panel)
   }
 
   ngOnInit(): void {

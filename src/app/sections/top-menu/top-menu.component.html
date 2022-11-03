@@ -1,9 +1,9 @@
-<button>
+<button (click)="downloadJSON()">
     <app-svg-save></app-svg-save>
-  </button>
-  <button>
-    <app-svg-upload></app-svg-upload>
-  </button>
-  <button class="user">
-    <app-svg-user></app-svg-user>
-  </button>
+</button>
+<button (click)="onClickUpload()">
+  <app-svg-upload></app-svg-upload>
+</button>
+<button class="user">
+  <app-svg-user></app-svg-user>
+</button>
