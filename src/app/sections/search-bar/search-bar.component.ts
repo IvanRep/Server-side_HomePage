@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import SearchEngine from 'src/app/model/SearchEngine.model';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,6 +11,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class SearchBarComponent implements OnInit {
 
   @Output() setSearchWindowEmitter:EventEmitter<string> = new EventEmitter<string>(); // Should emit 'search'
+
+  engine:SearchEngine = new SearchEngine('google','https://google.com/search','q','https://www.google.com/favicon.ico');
 
   searchForm:FormGroup = new FormGroup({
     search: new FormControl(''),
@@ -27,7 +30,7 @@ export class SearchBarComponent implements OnInit {
   newTabSearch(event:KeyboardEvent) {
     if (!event.ctrlKey || event.key !== 'Enter' ) return
 
-    let win = window.open('https://www.google.com/search?q='+this.searchForm.value.search, '_blank');
+    let win = window.open(this.engine.url+'?'+this.engine.searchParameter+'='+this.searchForm.value.search, '_blank');
   }
 
   cancelSearch() {
@@ -39,12 +42,16 @@ export class SearchBarComponent implements OnInit {
 
   onSubmit() {
     if (this.searchForm.value.search.length === 0) return;
-    console.warn(this.searchForm.value);
-    this.router.navigate(['search'],{ queryParams: { q: this.searchForm.value.search, page: 1, tab: 0}, });
+    if (this.engine.name === 'google') {
+      this.router.navigate(['search'],{ queryParams: { q: this.searchForm.value.search, page: 1, tab: 0}, });
     
-    setTimeout(() => location.reload());
-
-    console.log(this.route.queryParams)
-    // #gsc.tab=0&gsc.q=HOLA&gsc.page=1
+      setTimeout(() => location.reload());
+  
+      console.log(this.route.queryParams)
+      // #gsc.tab=0&gsc.q=HOLA&gsc.page=1
+    } else {
+      let win = window.open(this.engine.url+'?'+this.engine.searchParameter+'='+this.searchForm.value.search, '_blank');
+    }
+   
   }
 }

@@ -1,0 +1,20 @@
+button.engine-button {
+    width: 100%;
+    height: 100%;
+
+    background-color: white;
+    border: none;
+}
+
+button.engine-button img {
+    height: 80%;
+    border: 1px solid var(--light-border-color);
+    border-radius: 100%;
+    aspect-ratio: 1 / 1;
+
+    transition: .25s ease-in-out;
+}
+
+button.engine-button:hover img {
+    height: 90%;
+}

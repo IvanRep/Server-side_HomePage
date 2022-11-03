@@ -27,6 +27,7 @@ import { NewLinkPanelComponent } from './components/new-link-panel/new-link-pane
 import { LinkComponent } from './components/link/link.component';
 import { CreateLinkSvgComponent } from './svg/create-link-svg/create-link-svg.component';
 import { CrossSvgComponent } from './svg/cross-svg/cross-svg.component';
+import { EngineButtonComponent } from './components/engine-button/engine-button.component';
 ;
 
 const routes:Routes = [
@@ -59,7 +60,8 @@ const routes:Routes = [
     NewLinkPanelComponent,
     LinkComponent,
     CreateLinkSvgComponent,
-    CrossSvgComponent
+    CrossSvgComponent,
+    EngineButtonComponent
   ],
   imports: [
     BrowserModule,
