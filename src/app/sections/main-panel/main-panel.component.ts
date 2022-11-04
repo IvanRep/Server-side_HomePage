@@ -44,6 +44,7 @@ export class MainPanelComponent implements OnInit, OnChanges {
 
   openEditLinkPanel(link:Link) {
     this.editedLink = link;
+    console.log(this.editedLink)
     this.edit = true;
     this.panel = 'newLink';
     this.changePanelEmitter.emit('newLink');

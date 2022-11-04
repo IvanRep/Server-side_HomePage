@@ -43,7 +43,7 @@ export class MainMenuComponent implements OnInit, OnChanges {
       }
     }
     console.log(changes)
-    if (changes.reload.currentValue !== changes.reload.previousValue) {
+    if (changes.reload && changes.reload.currentValue !== changes.reload.previousValue) {
       this.filterTags('');
     }
     
