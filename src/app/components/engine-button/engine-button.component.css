@@ -1,6 +1,8 @@
 button.engine-button {
     width: 100%;
     height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 
     background-color: white;
     border: none;
@@ -8,11 +10,18 @@ button.engine-button {
 
 button.engine-button img {
     height: 80%;
+    padding: 5px;
+    background-color: var(--main-background-color);
     border: 1px solid var(--light-border-color);
     border-radius: 100%;
     aspect-ratio: 1 / 1;
 
     transition: .25s ease-in-out;
+}
+
+button.engine-button img.ghost {
+    display: none;
+    opacity: .7;
 }
 
 button.engine-button:hover img {
