@@ -27,6 +27,13 @@ export class SearchBarComponent implements OnInit {
       this.searchForm.setValue({search: url.substring(url.indexOf('q=')+2).replace(/&[A-z=.&0-9]*/,''), languageCode: 'es'});
   }
 
+  paste(event:MouseEvent) {
+    if (event.button === 2) {
+      navigator.clipboard.readText().then((clipText) =>
+        (<HTMLInputElement>event.target).value = clipText);
+    }
+  }
+
   newTabSearch(event:KeyboardEvent) {
     if (!event.ctrlKey || event.key !== 'Enter' ) return
 

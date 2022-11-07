@@ -1,7 +1,7 @@
 
 <form method="get" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <app-engine-button (engineEmitter)="engine = $event"></app-engine-button>
-    <input (input)="cancelSearch()" (keydown)="newTabSearch($event)" formControlName="search" [name]="engine.searchParameter" type="search" autofocus tabindex="1" maxlength="255" autocomplete="off" [title]="'Búsqueda en '+ engine.name" [placeholder]="'Búsqueda en '+ engine.name"  #queryInput>
+    <input (input)="cancelSearch()" (keydown)="newTabSearch($event)" (mousedown)="paste($event)" formControlName="search" [name]="engine.searchParameter" type="search" autofocus tabindex="1" maxlength="255" autocomplete="off" [title]="'Búsqueda en '+ engine.name" [placeholder]="'Búsqueda en '+ engine.name"  #queryInput>
     <input formControlName="languageCode" type="hidden" name="hl" value="es">
     <button class="search-button" type="submit" name="btnG" title="Buscar con Google" tabindex="-1">
             <app-magnifier></app-magnifier>
