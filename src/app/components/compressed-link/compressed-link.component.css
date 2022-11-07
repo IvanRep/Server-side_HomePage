@@ -1,11 +1,13 @@
 div.link {
     display: flex;
     align-items: center;
-    width: 60%;
+    min-width: 180px;
+    width: 70%;
     max-height: 100%;
-    padding: .2%;
+    padding: .3%;
     border: solid 2px var(--light-border-color);
-    border-radius: 15vw;
+    border-radius: 15vw;    
+
 }
 
 div.link:hover, div.hovered, button.hovered {
@@ -19,7 +21,7 @@ div.link>div {
     aspect-ratio: 1 / 1;
     border: 2px solid var(--light-border-color);
     border-radius: 100%;
-    padding: .5%;
+    padding: 1.25%;
     margin-left: 1%;
     margin-right: 5%;
 }
@@ -32,18 +34,28 @@ div.link>div>div {
     aspect-ratio: 1 / 1;
     border-radius: 100%;
     border: solid 6px var(--dark-border-color);
-}
 
+}
 button {
+    visibility: hidden;
     height: 100%;
+    max-width: 15%;
     aspect-ratio: 1 / 1;
-    border-radius: 15vw;
-    padding: .7%;
-    border: 2px solid var(--light-border-color);
-    margin-left: 1%;
+    border-top-right-radius: 15vw;
+    border-bottom-right-radius: 15vw;
+    margin-left: auto;
+    padding: 2.5%;
+    border: none;
     background-color: var(--main-background-color);
 }
 
+div.link:hover button {
+    visibility: visible;
+}
+
 button:hover {
-    border-color: var(--dark-border-color);
+    border-radius: 100%;
+    background: radial-gradient(var(--light-border-color),var(--main-background-color));
+    /* background: var(--light-border-color); */
+
 }

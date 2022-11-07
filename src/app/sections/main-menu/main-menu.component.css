@@ -41,10 +41,8 @@ li {
     justify-content: center;
     margin: auto;
     list-style: none;
-    text-align: center;
     width: 65%;
     max-width: 65%;
-    overflow: hidden;
     height: 7.5%;
     border-radius: 15vw;
     padding: 2.5%;
@@ -59,16 +57,19 @@ li:hover {
     background-color: var(--border-color);
 }
 li div {
-    display: flex;
+    display: inline-block;
+    min-width: 20px;
     width: 100%;
     max-width: 100%;
-    min-height: 100%;
-    overflow: hidden;
+    min-height: 100%;   
     border: none;
-    text-overflow: ellipsis;
     align-items: center;
     justify-content: center;
     text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 150%;
 }
 
 li.selected {
@@ -77,12 +78,14 @@ li.selected {
 
 li button {
     height: 100%;
+    max-width: 25px;
     aspect-ratio: 1 / 1;
     padding: 0%;
     background: none;
     border: none;
     transform: scaleX(-1);
     margin-left: auto;
+    margin-right: 5%;
 }
 
 /* MAIN MENU SROLL BAR */

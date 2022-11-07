@@ -1,0 +1,17 @@
+<div *ngIf="!link.imageUrl.startsWith('#') else colorLink" class="pointer link" (mousedown)="onClick($event,link.url)">
+    <div><img [src]="link.imageUrl" alt="logo" /></div>
+    {{link.name}}
+    <button (mouseenter)="colorHover(true)" (mouseleave)="colorHover(false)" (mousedown)="copyUrl($event,link.url)">
+        <app-svg-copy-link [fill]="buttonsColor" ></app-svg-copy-link>
+    </button>
+</div>
+<ng-template #colorLink>
+    <div class="pointer link" (mousedown)="onClick($event,link.url)">
+        <div><div [style]="'border-color:' + link.imageUrl"></div></div>
+        {{link.name}}
+        <button (mouseenter)="colorHover(true)" (mouseleave)="colorHover(false)" (mousedown)="copyUrl($event,link.url)">
+            <app-svg-copy-link [fill]="buttonsColor" ></app-svg-copy-link>
+        </button>
+    </div>
+</ng-template>
+

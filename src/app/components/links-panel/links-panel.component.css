@@ -7,4 +7,14 @@ app-link {
     margin-top: 2%;
 }
 
-
+app-compressed-link {
+    display: inline-flex;
+    flex-direction: row;
+    width: 50%;
+    max-width: 50%;
+    height: max(40px,7%);
+    max-height: max(40px,7%);
+    margin-right: 0%;
+    margin-top: 2%;
+    justify-content: center;
+}

@@ -28,6 +28,7 @@ import { LinkComponent } from './components/link/link.component';
 import { CreateLinkSvgComponent } from './svg/create-link-svg/create-link-svg.component';
 import { CrossSvgComponent } from './svg/cross-svg/cross-svg.component';
 import { EngineButtonComponent } from './components/engine-button/engine-button.component';
+import { CompressedLinkComponent } from './components/compressed-link/compressed-link.component';
 ;
 
 const routes:Routes = [
@@ -61,7 +62,8 @@ const routes:Routes = [
     LinkComponent,
     CreateLinkSvgComponent,
     CrossSvgComponent,
-    EngineButtonComponent
+    EngineButtonComponent,
+    CompressedLinkComponent
   ],
   imports: [
     BrowserModule,
