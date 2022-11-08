@@ -13,7 +13,7 @@ div.main>div {
     margin-top: 0px;
     margin-bottom: 0px;
     
-    font-size: max(15px,6.5vmin);
+    font-size: calc(10px + 2vmin + 1vmax);
     font-weight: bold;
     color: var(--secondary-background-color);
 }
@@ -29,7 +29,13 @@ div.main button {
 }
 
 @media screen and (max-width: 800px) {
-    div.main button {
-        visibility: hidden;
+    div.main>div {
+        margin: auto;
     }
+    
+    div.main button {
+        display: none;
+    }
+
+
 }

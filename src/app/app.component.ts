@@ -12,7 +12,8 @@ export class AppComponent implements OnInit {
   checkTags:boolean = false;
   reload:boolean = false;
   panel:string = 'links';
-  
+  linkView:string = 'simple-link' // can be 'simple-link', 'compressed-link', 'logo-link'
+
   constructor() {}
 
   ngOnInit() {

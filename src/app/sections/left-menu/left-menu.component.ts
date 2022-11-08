@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-left-menu',
@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftMenuComponent implements OnInit {
 
+  @Output() linkViewEmitter:EventEmitter<string> = new EventEmitter<string>();
+
+  fillButtonsColor:string[] = [
+    getComputedStyle(document.documentElement).getPropertyValue('--main-background-color'),
+    getComputedStyle(document.documentElement).getPropertyValue('--main-background-color'),
+    getComputedStyle(document.documentElement).getPropertyValue('--main-background-color')]
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+  
+  onHover(enter:boolean, button:number) {
+    if (enter) {
+      this.fillButtonsColor[button] = getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
+    } else {
+      this.fillButtonsColor[button] = getComputedStyle(document.documentElement).getPropertyValue('--main-background-color');
+    }
   }
 
 }

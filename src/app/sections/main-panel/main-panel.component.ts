@@ -11,6 +11,7 @@ export class MainPanelComponent implements OnInit, OnChanges {
   @Input() reload:boolean = false;
   @Input() checkTags:boolean = false;
   @Input() panel:string;// can be 'links' , 'newLink' , 'googleSearch'
+  @Input() linkView:string = 'simple-link' // can be 'simple-link', 'compressed-link', 'logo-link'
 
   @Output() changePanelEmitter:EventEmitter<string> = new EventEmitter<string>();
 

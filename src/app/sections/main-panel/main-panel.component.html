@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="panel">
 
-    <app-links-panel *ngSwitchCase="'links'" [reload]="reload"  [checkTags]="checkTags" (newLinkEmitter)="changePanel($event)" (editLinkEmitter)="openEditLinkPanel($event)" ></app-links-panel>
+    <app-links-panel *ngSwitchCase="'links'" [view]="linkView" [reload]="reload"  [checkTags]="checkTags" (newLinkEmitter)="changePanel($event)" (editLinkEmitter)="openEditLinkPanel($event)" ></app-links-panel>
     <div *ngSwitchCase="'googleSearch'" class="gcse-searchresults-only" style="max-width: 100%; width: 100%;"></div>
     <app-new-link-panel *ngSwitchCase="'newLink'" (exitPanelEmitter)="changePanel($event)" [link]="editedLink" [edit]="edit" ></app-new-link-panel>
 

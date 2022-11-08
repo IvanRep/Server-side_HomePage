@@ -1,14 +1,14 @@
 <!-- TOP MENU -->
 <app-top-menu (reloadEmitter)="reload = !reload"></app-top-menu>
 <!-- LEFT MENU -->
-<app-left-menu></app-left-menu>
+<app-left-menu (linkViewEmitter)="linkView = $event"></app-left-menu>
 <!-- SEARCH BAR -->
 <app-search-bar (setSearchWindowEmitter)="panel = $event"></app-search-bar>
 
 <!-- INFORMATION PANEL -->
 <app-information-panel></app-information-panel>
 <!-- MAIN PANEL -->
-<app-main-panel #mainPanel [reload]="reload" [checkTags]="checkTags" [panel]="panel" (changePanelEmitter)="panel = $event"></app-main-panel>
+<app-main-panel #mainPanel [linkView]="linkView" [reload]="reload" [checkTags]="checkTags" [panel]="panel" (changePanelEmitter)="panel = $event"></app-main-panel>
 
 <!-- MAIN MENU -->
 <app-main-menu (selectTagEmitter)="checkTags = !checkTags" [panel]="panel" [reload]="reload" ></app-main-menu>

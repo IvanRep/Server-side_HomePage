@@ -11,6 +11,7 @@ import { LinksServiceService } from 'src/app/services/links-service/links-servic
 })
 export class LinksPanelComponent implements OnInit, OnChanges {
 
+  @Input() view:string = 'simple-link';
   @Input() reload:boolean = false;
   @Input() checkTags:boolean = false;
   @Output() newLinkEmitter:EventEmitter<string> = new EventEmitter<string>();

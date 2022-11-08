@@ -1,0 +1,73 @@
+div.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 80%;
+    height: 100%;
+    max-height: 100%;
+    padding: 10%;
+    border: solid 2px var(--light-border-color);
+    border-radius: 1vw;    
+}
+
+div.link>span {
+    display: block;
+    /* min-width: 100%;
+    min-height: 100%; */
+    font-size: 20px;
+    text-overflow: ellipsis;
+    /* overflow: hidden; */
+    white-space: nowrap;
+}
+
+div.link:hover, div.hovered, button.hovered {
+    color: var(--accent-color);
+    border-color: var(--dark-border-color);
+}
+
+/* Link Logo */
+div.link>div {
+    min-width: 100%;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 2px solid var(--light-border-color);
+    border-radius: 100%;
+    padding: 25%;
+    margin-bottom: 15%;  
+}
+div.link>div>img {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+div.link>div>div {
+    min-width: 100%;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    border: solid 6px var(--dark-border-color);
+
+}
+button {
+    /* display: none; */
+    position: relative;
+    width: 20%;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    padding: 2.5%;
+    border: 2px solid var(--light-border-color);
+    background-color: var(--main-background-color);
+    transform: translateY(-650%) translateX(260%);
+}
+
+div.link:hover button {
+    visibility: visible;
+}
+
+button:hover {
+    border-radius: 100%;
+    background: radial-gradient(var(--light-border-color),var(--main-background-color));
+    /* background: var(--light-border-color); */
+
+}

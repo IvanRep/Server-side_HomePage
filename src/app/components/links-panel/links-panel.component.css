@@ -14,7 +14,18 @@ app-compressed-link {
     max-width: 50%;
     height: max(40px,7%);
     max-height: max(40px,7%);
-    margin-right: 0%;
     margin-top: 2%;
     justify-content: center;
+}
+
+app-logo-link {
+    display: inline-flex;
+    flex-direction: column;
+    width: 25%;
+    max-width: 25%;
+    aspect-ratio: 1.1 / 1;
+    /* max-height: max(40px,60%); */
+    margin-top: 2%;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,3 +1,14 @@
 <!-- <app-link *ngFor="let link of filteredLinks" [link]="link" (mousedown)="openOneLinkOptions($event,link)" ></app-link> -->
-<app-compressed-link *ngFor="let link of filteredLinks" [link]="link" (mousedown)="openOneLinkOptions($event,link)" ></app-compressed-link>
+<ng-container [ngSwitch]="view">
+    <ng-container *ngSwitchCase="'simple-link'">
+        <app-link  *ngFor="let link of filteredLinks" [link]="link" (mousedown)="openOneLinkOptions($event,link)" ></app-link>
+    </ng-container>
+    <ng-container *ngSwitchCase="'compressed-link'">
+        <app-compressed-link  *ngFor="let link of filteredLinks" [link]="link" (mousedown)="openOneLinkOptions($event,link)" ></app-compressed-link>
+    </ng-container>
+    <ng-container *ngSwitchCase="'logo-link'">
+        <app-logo-link  *ngFor="let link of filteredLinks" [link]="link" (mousedown)="openOneLinkOptions($event,link)" ></app-logo-link>
+    </ng-container>
 
+
+</ng-container>
