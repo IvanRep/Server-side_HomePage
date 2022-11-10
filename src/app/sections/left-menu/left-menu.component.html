@@ -1,9 +1,9 @@
-<button (click)="linkViewEmitter.emit('logo-link')" (mouseenter)="onHover(true,0)" (mouseleave)="onHover(false,0)">
+<button #logoButton (click)="changeView('logo-link',logoButton)" (mouseenter)="onHover(true,0)" (mouseleave)="onHover(false,0)">
     <app-svg-items [fill]="fillButtonsColor[0]"></app-svg-items>
 </button>
-<button (click)="linkViewEmitter.emit('compressed-link')" (mouseenter)="onHover(true,1)" (mouseleave)="onHover(false,1)">
+<button #compressedButton (click)="changeView('compressed-link',compressedButton)" (mouseenter)="onHover(true,1)" (mouseleave)="onHover(false,1)">
     <app-svg-double-list [fill]="fillButtonsColor[1]"></app-svg-double-list>
 </button>
-<button (click)="linkViewEmitter.emit('simple-link')" (mouseenter)="onHover(true,2)" (mouseleave)="onHover(false,2)">
+<button #simpleButton class="viewSelected" (click)="changeView('simple-link',simpleButton)" (mouseenter)="onHover(true,2)" (mouseleave)="onHover(false,2)">
     <app-svg-list [fill]="fillButtonsColor[2]"></app-svg-list>
 </button>

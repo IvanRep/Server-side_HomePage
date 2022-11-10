@@ -1,4 +1,4 @@
-<button class="engine-button" tabindex="-1" (mouseenter)="onHover()" (mouseleave)="onBlur()"  (wheel)="changeEngine($event)">
+<button class="engine-button" tabindex="-1" (mouseenter)="onHover()" (mouseleave)="onBlur()"  (wheel)="changeEngine($event)" (click)="cancelClick($event)" (dragstart)="dragStart($event)">
     <img class="ghost" [src]="engines[ghostEngine1].image" #img1 />
     <img [src]="engines[selectedEngine].image" #mainImg />
     <img class="ghost" [src]="engines[ghostEngine2].image" #img2 />

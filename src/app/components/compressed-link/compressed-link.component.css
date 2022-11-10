@@ -24,6 +24,7 @@ div.link>div {
     padding: 1.25%;
     margin-left: 1%;
     margin-right: 5%;
+    overflow: hidden;
 }
 div.link>div>img {
     height: 100%;

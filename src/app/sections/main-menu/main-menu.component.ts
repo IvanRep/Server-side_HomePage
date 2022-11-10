@@ -168,7 +168,7 @@ export class MainMenuComponent implements OnInit, OnChanges {
 
       //New Tag
       const li = document.createElement('li');
-      li.textContent = 'Nueva Pestaña';
+      li.textContent = 'Nueva Etiqueta';
       li.onmousedown = (event)=>{ this.createTag(event, this.filteredTags) };
       ul.appendChild(li);
       

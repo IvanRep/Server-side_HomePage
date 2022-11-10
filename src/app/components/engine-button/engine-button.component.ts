@@ -81,4 +81,16 @@ export class EngineButtonComponent implements OnInit {
     img2.style.display = 'none';
   }
 
+  cancelClick(event:MouseEvent) {
+    event.stopPropagation();
+    event.preventDefault();
+    return false;
+  }
+
+  dragStart(event:DragEvent) {
+    event.stopPropagation();
+    event.preventDefault();
+    return false;
+  }
+
 }

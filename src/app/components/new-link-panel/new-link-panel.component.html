@@ -16,7 +16,7 @@
     </div>
     <button class="submitButton" type="submit">
         <div class="svg"><app-create-link-svg [fill]="linkColor"></app-create-link-svg></div>
-        <div class="text">Crear Link</div>
+        <div class="text">{{submitButtonText}}</div>
     </button>
     <button (click)="cancel()" class="cancelButton">
         <app-cross-svg [fill]="crossColor"></app-cross-svg>

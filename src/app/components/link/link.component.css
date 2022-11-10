@@ -22,6 +22,7 @@ div.link>div {
     padding: .5%;
     margin-left: 1%;
     margin-right: 5%;
+    overflow: hidden;
 }
 div.link>div>img {
     height: 100%;
@@ -32,13 +33,14 @@ div.link>div>div {
     aspect-ratio: 1 / 1;
     border-radius: 100%;
     border: solid 6px var(--dark-border-color);
+    overflow: hidden;
 }
 
 button {
     height: 100%;
     aspect-ratio: 1 / 1;
     border-radius: 15vw;
-    padding: .7%;
+    padding: .9%;
     border: 2px solid var(--light-border-color);
     margin-left: 1%;
     background-color: var(--main-background-color);

@@ -13,6 +13,7 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
 
   linkColor = getComputedStyle(document.documentElement).getPropertyValue('--main-background-color');
   crossColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary-background-color');
+  submitButtonText = 'Crear Link';
 
   @ViewChild("imageInput") imageInput!:ElementRef;
   @ViewChild("urlInput") urlInput!:ElementRef;
@@ -49,6 +50,8 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
       url: new FormControl(this.link.url),
       image: new FormControl(this.link.imageUrl),
     });
+
+    this.submitButtonText = this.edit ? 'Editar Link' : 'Crear Link';
 
   }
 

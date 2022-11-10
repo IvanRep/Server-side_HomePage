@@ -27,4 +27,12 @@ export class LeftMenuComponent implements OnInit {
     }
   }
 
+  changeView(view:string, selectedButton:HTMLButtonElement) {
+    const previousButton = (<HTMLButtonElement>document.querySelector('button.viewSelected'));
+    if (previousButton) previousButton.classList.remove('viewSelected');
+
+    selectedButton.classList.add('viewSelected');
+    this.linkViewEmitter.emit(view);
+  }
+
 }

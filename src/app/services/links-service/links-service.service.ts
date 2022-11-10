@@ -28,11 +28,13 @@ export class LinksServiceService {
 
   saveLocalLinks() {
 
-    localStorage.setItem(this.user+'Links',JSON.stringify(this.links));
+    this.sortLinks();
+    localStorage.setItem(this.user+'Links',JSON.stringify(this.links));    
   }
 
   saveLocalTags() {
-    
+
+    this.sortTags();    
     localStorage.setItem(this.user+'Tags',JSON.stringify(this.tags));
   }
 
@@ -58,6 +60,45 @@ export class LinksServiceService {
       }
       this.links.push(new Link(link.id,link.name,link.url,link.imageUrl,selectedTags,link.creationDate))
     }
+
+    this.sortTags();
+    this.sortLinks();
+  }
+
+  sortTags() {
+    this.tags.sort((a:Tag, b:Tag) => {
+
+      for (let i = 0; i<a.name.length; i++) {
+        if (i >= b.name.length) return 1;
+
+        if (a.name.toLowerCase().charCodeAt(i) === b.name.toLowerCase().charCodeAt(i)) continue;
+
+        if (a.name.toLowerCase().charCodeAt(i) < b.name.toLowerCase().charCodeAt(i)) return -1;
+        
+        if (a.name.toLowerCase().charCodeAt(i) > b.name.toLowerCase().charCodeAt(i)) return 1;  
+      }
+
+      return 0;
+      
+    });
+  }
+
+  sortLinks() {
+    this.links.sort((a:Link, b:Link) => {
+
+      for (let i = 0; i<a.name.length; i++) {
+        if (i >= b.name.length) return 1;
+
+        if (a.name.toLowerCase().charCodeAt(i) === b.name.toLowerCase().charCodeAt(i)) continue;
+
+        if (a.name.toLowerCase().charCodeAt(i) < b.name.toLowerCase().charCodeAt(i)) return -1;
+        
+        if (a.name.toLowerCase().charCodeAt(i) > b.name.toLowerCase().charCodeAt(i)) return 1;  
+      }
+
+      return 0;
+      
+    });
   }
 
 }
