@@ -16,9 +16,9 @@ export class EngineButtonComponent implements OnInit {
 
 
   engines:SearchEngine[] = [
-    new SearchEngine('google','https://google.com/search','q','https://www.google.com/favicon.ico'),
-    new SearchEngine('you','https://you.com/search','q','https://you.com/_next/image?url=%2Fimages%2Fydc-logo-lightdarkmode.svg&w=256&q=75'),
-    new SearchEngine('youtube','https://www.youtube.com/results','search_query','https://cdn-icons-png.flaticon.com/512/1384/1384060.png')
+    new SearchEngine('Google','https://google.com/search','q','https://www.google.com/favicon.ico'),
+    new SearchEngine('You','https://you.com/search','q','https://you.com/images/ydc-logo-lightdarkmode.svg'),
+    new SearchEngine('Youtube','https://www.youtube.com/results','search_query','https://cdn-icons-png.flaticon.com/512/1384/1384060.png')
   ]
 
   ghostEngine1:number = this.engines.length-1;

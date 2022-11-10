@@ -12,7 +12,7 @@ export class SearchBarComponent implements OnInit {
 
   @Output() setSearchWindowEmitter:EventEmitter<string> = new EventEmitter<string>(); // Should emit 'search'
 
-  engine:SearchEngine = new SearchEngine('google','https://google.com/search','q','https://www.google.com/favicon.ico');
+  engine:SearchEngine = new SearchEngine('Google','https://google.com/search','q','https://www.google.com/favicon.ico');
 
   searchForm:FormGroup = new FormGroup({
     search: new FormControl(''),
@@ -35,9 +35,13 @@ export class SearchBarComponent implements OnInit {
   }
 
   newTabSearch(event:KeyboardEvent) {
-    if (!event.ctrlKey || event.key !== 'Enter' ) return
-
-    let win = window.open(this.engine.url+'?'+this.engine.searchParameter+'='+this.searchForm.value.search, '_blank');
+    if (!(event.key === 'Enter')) return;
+    
+    if (!event.ctrlKey) {
+      this.onSubmit();
+    } else {
+      let win = window.open(this.engine.url+'?'+this.engine.searchParameter+'='+this.searchForm.value.search, '_blank');
+    }
   }
 
   cancelSearch() {
@@ -49,7 +53,7 @@ export class SearchBarComponent implements OnInit {
 
   onSubmit() {
     if (this.searchForm.value.search.length === 0) return;
-    if (this.engine.name === 'google') {
+    if (this.engine.name === 'Google') {
       this.router.navigate(['search'],{ queryParams: { q: this.searchForm.value.search, page: 1, tab: 0}, });
     
       setTimeout(() => location.reload());
@@ -59,6 +63,6 @@ export class SearchBarComponent implements OnInit {
     } else {
       let win = window.open(this.engine.url+'?'+this.engine.searchParameter+'='+this.searchForm.value.search, '_blank');
     }
-   
+  
   }
 }
