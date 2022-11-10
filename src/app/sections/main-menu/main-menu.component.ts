@@ -194,7 +194,7 @@ export class MainMenuComponent implements OnInit, OnChanges {
 
     setTimeout(() => {
       const div = (<HTMLDivElement>document.querySelector('div#tagdiv'+id));
-      div.focus()});
+      div.focus()},100);
   }
 
   editTag(event:MouseEvent, tag:Tag) {
