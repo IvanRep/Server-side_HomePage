@@ -44,12 +44,16 @@ export class LinksPanelComponent implements OnInit, OnChanges {
     // if not, clear the array and add the links that contain at least one selected Tag 
     this.filteredLinks = [];
     this.linksService.links.forEach((link:Link) => {
-      for (let tag of link.tags) {
-        if (this.linksService.selectedFilterTags.includes(tag)) {
-          this.filteredLinks.push(link);
+      let validLink:boolean = true; // Check if the link contains all selected tags
+      for (let tag of this.linksService.selectedFilterTags) {
+
+        if (!link.tags.includes(tag)) {
+          validLink = false;
           break;
         }
       }
+      if (validLink) this.filteredLinks.push(link); //If the link contains all selected tags, it is added
+
     });
   }
 
