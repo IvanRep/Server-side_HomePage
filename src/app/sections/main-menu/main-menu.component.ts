@@ -67,6 +67,8 @@ export class MainMenuComponent implements OnInit, OnChanges {
   }
   selectTag(event:MouseEvent, tag:Tag) {
 
+    if (tag.editable) return;
+
     if (event.button == 2) {
       this.openOneTagOptions(event, tag);
       return;
