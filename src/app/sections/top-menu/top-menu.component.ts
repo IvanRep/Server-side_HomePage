@@ -10,7 +10,13 @@ import { LinksServiceService } from 'src/app/services/links-service/links-servic
 export class TopMenuComponent implements OnInit {
 
 
-  @Output() reloadEmitter:EventEmitter<void> = new EventEmitter<void>(); 
+  @Output() reloadEmitter:EventEmitter<void> = new EventEmitter<void>();
+
+  fillButtonsColor:string[] = [
+    getComputedStyle(document.documentElement).getPropertyValue('--main-background-color'),
+    getComputedStyle(document.documentElement).getPropertyValue('--main-background-color')
+  ];
+
 
   constructor(private linksService:LinksServiceService) { }
 
@@ -126,7 +132,14 @@ export class TopMenuComponent implements OnInit {
         });
       }
     })
+  }
 
+  onHover(enter:boolean, button:number) {
+    if (enter) {
+      this.fillButtonsColor[button] = getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
+    } else {
+      this.fillButtonsColor[button] = getComputedStyle(document.documentElement).getPropertyValue('--main-background-color');
+    }
   }
 
 }
