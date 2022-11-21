@@ -52,11 +52,12 @@ li {
     border-bottom: 3px solid var(--border-color);
     margin-top: 6%;
     margin-bottom: 6%;
+    position: relative;
 }
 li:hover {
     background-color: var(--border-color);
 }
-li div {
+li div.tagName {
     display: inline-block;
     min-width: 20px;
     width: 100%;
@@ -73,6 +74,15 @@ li div {
     line-height: 150%;
 }
 
+li div.byDefault {
+    position: absolute;
+    right: 7%;
+    border-radius: 100%;
+    width: auto;
+    border: solid 3px var(--main-background-color);
+    box-shadow: 0 0 2px 3px var(--main-background-color);
+}
+
 li div.editable {
     cursor: text;
 }
@@ -82,6 +92,7 @@ li.selected {
 }
 
 li button {
+    position: absolute;
     height: 100%;
     max-width: 25px;
     aspect-ratio: 1 / 1;
@@ -89,8 +100,7 @@ li button {
     background: none;
     border: none;
     transform: scaleX(-1);
-    margin-left: auto;
-    margin-right: 5%;
+    right: 5%;
 }
 
 /* MAIN MENU SROLL BAR */

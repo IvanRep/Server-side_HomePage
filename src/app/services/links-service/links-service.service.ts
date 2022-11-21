@@ -38,11 +38,15 @@ export class LinksServiceService {
     localStorage.setItem(this.user+'Tags',JSON.stringify(this.tags));
   }
 
-  loadData(links:any, tags:any) {
+  loadData(links:any, tags:any, reset = false) {
+    if (reset) {
+      this.links.length = 0;
+      this.tags.length = 0;
+    }
     for (let tag of tags) {
       const currentTag = new Tag(tag.id,tag.name,tag.selectedByDefault,false,false,tag.creationDate);
-      if (currentTag.selectedByDefault) {
-        currentTag.selected = true;
+      if (currentTag.selectedByDefault && !reset) { //If it's not a reset, the tag selected by default is selected
+        currentTag.selected = true; 
         this.selectedFilterTags.push(currentTag);
       }
       this.tags.push(currentTag);
@@ -61,6 +65,17 @@ export class LinksServiceService {
       this.links.push(new Link(link.id,link.name,link.url,link.imageUrl,selectedTags,link.creationDate))
     }
 
+    if (reset) { //If it's a reset, the previous selected tags will be reset
+      for (let i:number = 0; i<this.selectedFilterTags.length; i++) {
+        for(let tag of this.tags) {
+          if (tag.name === this.selectedFilterTags[i].name) {
+            tag.selected = true;
+            this.selectedFilterTags[i] = tag;
+            break;
+          }
+        }
+      }
+    }
     this.sortTags();
     this.sortLinks();
   }

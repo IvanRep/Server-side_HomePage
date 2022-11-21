@@ -34,15 +34,15 @@ export class MainMenuComponent implements OnInit, OnChanges {
       } 
       if (changes.panel.currentValue === "links") {
         this.selectedTags = this.linksService.selectedFilterTags;
-        this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
-          tag.selected = true;
-        });
         this.linksService.selectedNewLinkTags.forEach( (tag:Tag) => {
           tag.selected = false;
         });
+        this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
+          tag.selected = true;
+        });
       }
     }
-    console.log(changes)
+
     if (changes.reload && changes.reload.currentValue !== changes.reload.previousValue) {
       this.filterTags('');
     }
@@ -286,6 +286,10 @@ export class MainMenuComponent implements OnInit, OnChanges {
     
     this.linksService.saveLocalTags() // SAVE TAGS lOCAL
     this.linksService.saveLocalLinks() // SAVE LINKS lOCAL
+
+    this.linksService.loadData(this.linksService.links.slice(), this.linksService.tags.slice(), true);
+    this.filterTags('');
+    this.selectTagEmitter.emit();
     //DELETE TAGS OF LINKS
     //DELETE TAG API !!!!!!!!
   }

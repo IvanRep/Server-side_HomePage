@@ -9,7 +9,8 @@
       [ngClass]="{'selected': tag.selected}" 
       (mousedown)="selectTag($event,tag)"
     >
-        <div #tagDiv [id]="'tagdiv'+tag.id" [ngClass]="{'editable' : tag.editable}" [contentEditable]="tag.editable" (blur)="saveTag(tagDiv,tag,inputFilter.value)" (keyup)="discardTag($event,tag)" tabindex="1">{{tag.name}}</div>
-        <button *ngIf="tag.editable" (click)="saveTag(tagDiv,tag,inputFilter.value)" ><app-svg-tags [fillColor]="'white'"></app-svg-tags></button>
+      <div class="byDefault" *ngIf="tag.selectedByDefault"></div> 
+      <div #tagDiv class="tagName" [id]="'tagdiv'+tag.id" [ngClass]="{'editable' : tag.editable}" [contentEditable]="tag.editable" (blur)="saveTag(tagDiv,tag,inputFilter.value)" (keyup)="discardTag($event,tag)" tabindex="1">{{tag.name}}</div>
+      <button *ngIf="tag.editable" (click)="saveTag(tagDiv,tag,inputFilter.value)" ><app-svg-tags [fillColor]="'white'"></app-svg-tags></button>  
     </li>
 </ul>
