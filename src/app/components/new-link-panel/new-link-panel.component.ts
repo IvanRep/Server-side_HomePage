@@ -154,6 +154,12 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
     this.link.url = this.newLinkForm.value.url;
     this.link.imageUrl = this.newLinkForm.value.image;
     this.link.tags = this.link.tags.slice();
+
+    if (this.checkIfLinkExists(this.link)) {
+      alert("Ese link ya existe");
+      return;
+    }
+
     if (!this.edit) {
       this.linksService.links.push(this.link);
       // ADD LINK API !!!!!!!!!!
@@ -166,6 +172,14 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
     this.linksService.saveLocalLinks() // SAVE LINKS lOCAL
     
     this.exitPanelEmitter.emit('links');
+  }
+
+  checkIfLinkExists(link:Link) {
+    for (let value of this.linksService.links) {
+      if (link.name === value.name || link.url === value.url)
+        return true;
+    }
+    return false;
   }
 
   cancel() {
