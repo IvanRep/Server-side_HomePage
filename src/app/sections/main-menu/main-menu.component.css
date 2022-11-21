@@ -61,7 +61,8 @@ li div {
     min-width: 20px;
     width: 100%;
     max-width: 100%;
-    min-height: 100%;   
+    min-height: 22px;   
+    height: 100%;
     border: none;
     align-items: center;
     justify-content: center;

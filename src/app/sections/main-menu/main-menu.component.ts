@@ -206,9 +206,8 @@ export class MainMenuComponent implements OnInit, OnChanges {
     }
   }
 
-  saveTag(tag:Tag,filter:string) {
+  saveTag(div:HTMLDivElement,tag:Tag,filter:string) {
     if (tag.editable) {
-      const div = (<HTMLDivElement>document.querySelector('div#tagdiv'+this.filteredTags[this.filteredTags.length-1].id));
       tag.name = div.textContent || '';
       div.textContent = tag.name;
       if (tag.name.length === 0) {
@@ -216,7 +215,7 @@ export class MainMenuComponent implements OnInit, OnChanges {
         if (index !== -1)
           this.filteredTags.splice(index);
         return;
-      } 
+      }
       tag.name.trim();
       tag.name.charAt(0).toUpperCase();
       tag.editable = false;
@@ -241,9 +240,10 @@ export class MainMenuComponent implements OnInit, OnChanges {
       (<HTMLDivElement>event.currentTarget).blur();
     }
     if (event.key === "Escape") {
+      tag.editable = false;
       const index = this.filteredTags.indexOf(tag);
       if (index !== -1)
-        this.filteredTags.splice(index);
+        this.filteredTags.splice(index,1);
     }
   }
 
