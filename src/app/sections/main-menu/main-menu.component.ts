@@ -190,8 +190,13 @@ export class MainMenuComponent implements OnInit, OnChanges {
     event.preventDefault();
     if (event.button !== 0) return;
 
+    let id = 0;
+    //Set max id
+    tags.forEach((tag:Tag) => {
+      if (tag.id >= id) 
+        id = tag.id + 1;
+    });
 
-    const id = tags.length>0 ? tags[tags.length-1].id+1 : 0;
     tags.push(new Tag(id,'',false,false,true));
 
     setTimeout(() => {
@@ -203,6 +208,9 @@ export class MainMenuComponent implements OnInit, OnChanges {
     event.preventDefault();
     if (event.button === 0) {
       tag.editable = true;
+      setTimeout(() => {
+        const div = (<HTMLDivElement>document.querySelector('div#tagdiv'+tag.id));
+        div.focus()},100);
     }
   }
 
@@ -210,10 +218,10 @@ export class MainMenuComponent implements OnInit, OnChanges {
     if (tag.editable) {
       tag.name = div.textContent || '';
       div.textContent = tag.name;
-      if (tag.name.length === 0) {
+      if (tag.name.length === 0 || this.checkIfTagExists(tag)) {
         const index = this.filteredTags.indexOf(tag);
         if (index !== -1)
-          this.filteredTags.splice(index);
+          this.filteredTags.splice(index,1);
         return;
       }
       tag.name.trim();
@@ -231,8 +239,18 @@ export class MainMenuComponent implements OnInit, OnChanges {
 
       this.filterTags(filter);
     }
+  }
 
+  checkIfTagExists(tag:Tag) {
+    let exists = false;
+    for (let value of this.linksService.tags) {
+      if (tag.name === value.name) {
+        return true;
+      }
+      console.log(1)
+    }
     
+    return false;
   }
 
   discardTag(event:KeyboardEvent, tag:Tag) {

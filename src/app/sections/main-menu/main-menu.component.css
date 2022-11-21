@@ -73,6 +73,10 @@ li div {
     line-height: 150%;
 }
 
+li div.editable {
+    cursor: text;
+}
+
 li.selected {
     border-color: var(--accent-color);
 }
@@ -91,7 +95,7 @@ li button {
 
 /* MAIN MENU SROLL BAR */
 ul::-webkit-scrollbar {
-    -webkit-appearance: none;
+    appearance: none;
 }
 ul::-webkit-scrollbar-button:increment {
     display: none;
