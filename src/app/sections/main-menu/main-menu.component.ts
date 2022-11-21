@@ -201,6 +201,7 @@ export class MainMenuComponent implements OnInit, OnChanges {
 
     setTimeout(() => {
       const div = (<HTMLDivElement>document.querySelector('div#tagdiv'+id));
+      div.classList.add('new');
       div.focus()},100);
   }
 
@@ -220,13 +221,16 @@ export class MainMenuComponent implements OnInit, OnChanges {
       div.textContent = tag.name;
       if (tag.name.length === 0 || this.checkIfTagExists(tag)) {
         const index = this.filteredTags.indexOf(tag);
-        if (index !== -1)
+        if (index !== -1 && div.classList.contains('new')) //Delete tag if it is a new Tag
           this.filteredTags.splice(index,1);
         return;
       }
+
       tag.name.trim();
-      tag.name.charAt(0).toUpperCase();
+      tag.name = tag.name.charAt(0).toUpperCase() + tag.name.substring(1);
+      div.textContent = tag.name;
       tag.editable = false;
+      div.classList.remove('new');
 
       if (this.linksService.tags.includes(tag)) {
         //CHANGE NAME API !!!!!!
@@ -242,14 +246,12 @@ export class MainMenuComponent implements OnInit, OnChanges {
   }
 
   checkIfTagExists(tag:Tag) {
-    let exists = false;
     for (let value of this.linksService.tags) {
-      if (tag.name === value.name) {
+      if (tag.name === value.name && tag.id !== value.id) {
         return true;
       }
-      console.log(1)
     }
-    
+
     return false;
   }
 
@@ -259,8 +261,9 @@ export class MainMenuComponent implements OnInit, OnChanges {
     }
     if (event.key === "Escape") {
       tag.editable = false;
+
       const index = this.filteredTags.indexOf(tag);
-      if (index !== -1)
+      if (index !== -1 && (<HTMLDivElement>event.currentTarget).classList.contains('new'))  //Delete tag if it is a new Tag
         this.filteredTags.splice(index,1);
     }
   }

@@ -150,12 +150,13 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
+    let previousLink = this.link;
     this.link.name = this.newLinkForm.value.name;
     this.link.url = this.newLinkForm.value.url;
     this.link.imageUrl = this.newLinkForm.value.image;
     this.link.tags = this.link.tags.slice();
 
-    if (this.checkIfLinkExists(this.link)) {
+    if (this.checkIfLinkExists(this.link, previousLink)) {
       alert("Ese link ya existe");
       return;
     }
@@ -174,9 +175,10 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
     this.exitPanelEmitter.emit('links');
   }
 
-  checkIfLinkExists(link:Link) {
+  checkIfLinkExists(link:Link, previousLink:Link) {
     for (let value of this.linksService.links) {
-      if (link.name === value.name || link.url === value.url)
+      if (!(value.name === previousLink.name && value.url === previousLink.url) 
+      && (link.name === value.name || link.url === value.url))
         return true;
     }
     return false;
