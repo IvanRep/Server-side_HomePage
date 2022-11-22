@@ -7,3 +7,11 @@
 <button class="user">
   <app-svg-user></app-svg-user>
 </button>
+
+<app-confirm-menu #ConfirmMenu
+  [mainText]="'¿Quieres sobrescribir los datos?'" 
+  [mainButtonText]="'Sobrescribir links'" 
+  [secondaryButtonText]="'Añadir Links'"
+  [object]="this"
+>
+</app-confirm-menu>

@@ -25,7 +25,11 @@ export class AppComponent implements OnInit {
     const menu = document.getElementById('contextMenu');
     if (menu) {
       document.body.removeChild(menu);
-      return;
+    }
+    const confirmMenu = (<HTMLDivElement>document.querySelector('app-confirm-menu'));
+    if (confirmMenu) {
+      confirmMenu.style.visibility = 'hidden';
+      confirmMenu.style.opacity = '0';
     }
   }
 

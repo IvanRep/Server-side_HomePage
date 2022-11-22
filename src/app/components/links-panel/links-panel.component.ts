@@ -64,6 +64,11 @@ export class LinksPanelComponent implements OnInit, OnChanges {
       document.body.removeChild(settings);
       return;
     }
+    const confirmMenu = (<HTMLDivElement>document.querySelector('app-confirm-menu'));
+    if (confirmMenu) {
+      confirmMenu.style.visibility = 'hidden';
+      confirmMenu.style.opacity = '0';
+    }
 
     if (event.button === 2) {
       const ul = document.createElement('ul');
@@ -99,6 +104,11 @@ export class LinksPanelComponent implements OnInit, OnChanges {
     if (settings) {
       document.body.removeChild(settings);
       return;
+    }
+    const confirmMenu = (<HTMLDivElement>document.querySelector('app-confirm-menu'));
+    if (confirmMenu) {
+      confirmMenu.style.visibility = 'hidden';
+      confirmMenu.style.opacity = '0';
     }
     if (event.button !== 2) return;
 

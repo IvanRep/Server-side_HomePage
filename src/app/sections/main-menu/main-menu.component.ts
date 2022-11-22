@@ -102,6 +102,12 @@ export class MainMenuComponent implements OnInit, OnChanges {
       document.body.removeChild(settings);
       return;
     }
+    const confirmMenu = (<HTMLDivElement>document.querySelector('app-confirm-menu'));
+    if (confirmMenu) {
+      confirmMenu.style.visibility = 'hidden';
+      confirmMenu.style.opacity = '0';
+    }
+    
     //Create ContextMenu
     const ul = document.createElement('ul');
     ul.id = 'contextMenu';
@@ -158,6 +164,11 @@ export class MainMenuComponent implements OnInit, OnChanges {
     if (settings) {
       document.body.removeChild(settings);
       return;
+    }
+    const confirmMenu = (<HTMLDivElement>document.querySelector('app-confirm-menu'));
+    if (confirmMenu) {
+      confirmMenu.style.visibility = 'hidden';
+      confirmMenu.style.opacity = '0';
     }
 
     if (event.button === 2) {

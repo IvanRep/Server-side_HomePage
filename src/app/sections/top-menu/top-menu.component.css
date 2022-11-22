@@ -11,3 +11,27 @@ button {
 button.user {
     margin-left: auto;
 }
+
+app-confirm-menu {
+    visibility: hidden;
+    opacity: 0;
+
+    display: grid;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    height: 10vw;
+    max-height: 10vw;
+    width: 20vw;
+    max-width: 20vw;
+    border-radius: 25px;
+    background-color: var(--secondary-background-color);
+
+    grid-template-areas: 
+    "ti ti"
+    "sb mb";
+
+}

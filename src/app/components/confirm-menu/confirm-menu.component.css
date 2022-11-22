@@ -1,0 +1,21 @@
+div.title {
+    grid-area: ti;
+    margin: auto;
+    color: var(--main-background-color);
+}
+
+input {
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    color: var(--secondary-background-color);
+
+}
+
+input.mainButton {
+    grid-area: mb;
+}
+
+input.secondaryButton {
+    grid-area: sb;
+}
