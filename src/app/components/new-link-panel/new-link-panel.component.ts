@@ -43,6 +43,15 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
     this.linksService.selectedNewLinkTags.length = 0;
     this.link.tags.forEach( (tag:Tag) => {tag.selected = true; this.linksService.selectedNewLinkTags.push(tag)})
     this.savedLinkTags = this.link.tags.slice();
+
+    // If it's a new link, it add the selected tags to the link
+    if (!this.edit) {
+      this.linksService.selectedFilterTags.forEach( (tag:Tag) => {
+        tag.selected = true;
+        this.linksService.selectedNewLinkTags.push(tag);
+      });
+    }
+
     this.link.tags = this.linksService.selectedNewLinkTags;
 
     this.newLinkForm = new FormGroup({

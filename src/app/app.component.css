@@ -61,7 +61,7 @@ app-main-panel {
 
 /* MAIN PANEL SROLL BAR */
 app-main-panel::-webkit-scrollbar {
-    -webkit-appearance: none;
+    appearance: none;
 }
 app-main-panel::-webkit-scrollbar-button:increment {
     display: none;
