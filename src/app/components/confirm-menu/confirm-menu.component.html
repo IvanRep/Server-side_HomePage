@@ -1,3 +1,4 @@
-<div class="title">{{mainText}}</div>
-<input type="button" class="secondaryButton pointer" [value]="secondaryButtonText" (mousedown)="onClickSecondaryFunction($event)"/>
-<input type="submit" class="mainButton pointer" [value]="mainButtonText" (mousedown)="onClickMainFunction($event)" />
+<div class="title">{{titleText}}</div>
+<div *ngIf="messageText != undefined && messageText.trim() !== ''" class="message">{{messageText}}</div>
+<input *ngIf="secondaryButtonText != undefined && secondaryButtonText.trim() !== ''" type="button" class="secondaryButton pointer" [class]="danger.toLowerCase() === 'secondary'?'danger' : ''" [value]="secondaryButtonText" (mousedown)="onClickSecondaryFunction($event)"/>
+<input *ngIf="mainButtonText != undefined && mainButtonText.trim() !== ''" type="submit" class="mainButton pointer" [class]="danger.toLowerCase() === 'main'?'danger' : ''" [value]="mainButtonText" (mousedown)="onClickMainFunction($event)" />

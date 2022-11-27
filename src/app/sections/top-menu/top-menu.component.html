@@ -9,9 +9,11 @@
 </button>
 
 <app-confirm-menu #ConfirmMenu
-  [mainText]="'¿Quieres sobrescribir los datos?'" 
-  [mainButtonText]="'Sobrescribir links'" 
+  [titleText]="'¿Quieres sobrescribir los datos?'"
+  [messageText]="'Al pulsar \'Sobrescribir links\' los anteriores serán eliminados'"
+  [mainButtonText]="'Sobrescribir links'"
   [secondaryButtonText]="'Añadir Links'"
+  [danger]="'main'"
   [object]="this"
 >
 </app-confirm-menu>
