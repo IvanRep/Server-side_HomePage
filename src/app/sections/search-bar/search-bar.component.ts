@@ -48,7 +48,7 @@ export class SearchBarComponent implements OnInit {
   cancelSearch() {
     if (this.searchForm.value.search.length !== 0) return;
 
-    if (location.href.includes('#')) location.href = location.href.split('#')[0]
+    if (location.href.includes('#')) location.href = location.href.split('#')[0] + '#';
     this.setSearchWindowEmitter.emit('links');
   }
 
