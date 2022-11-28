@@ -9,9 +9,11 @@ import { ConfirmMenuInterface } from './confirm-menu.interface';
 })
 export class ConfirmMenuComponent implements OnInit {
 
-  @Input() mainText:string = '';
+  @Input() titleText:string = '';
+  @Input() messageText:string = '';
   @Input() mainButtonText:string = '';
   @Input() secondaryButtonText:string = '';
+  @Input() danger:string = '';
 
   @Input() object!:ConfirmMenuInterface
 

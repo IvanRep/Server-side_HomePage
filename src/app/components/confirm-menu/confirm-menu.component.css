@@ -1,7 +1,18 @@
 div.title {
     grid-area: ti;
-    margin: auto;
-    color: var(--main-background-color);
+    color: var(--secondary-background-color);
+
+    align-self: flex-end;
+    font-weight: bold;
+    text-align: center;
+}
+
+div.message {
+    grid-area: ms;
+    padding: 6%;
+    color: var(--secondary-background-color);
+
+    text-align: center;
 }
 
 input {
@@ -10,6 +21,27 @@ input {
     font-size: 20px;
     color: var(--secondary-background-color);
 
+}
+
+input{
+    background-color: var(--main-backgroud-color);
+    border: 1px solid var(--light-border-color);
+    border-radius: 25px;
+
+    width: 80%;
+    padding: 3%;
+    justify-self: center;
+    font-size: max(10px, .9vw);
+}
+
+input:hover{
+    border: none;
+
+    box-shadow: 2px 2px 3px 1px var(--main-accent-color);
+}
+
+input.danger:hover{
+    background-color: var(--delete-accent-color);
 }
 
 input.mainButton {
