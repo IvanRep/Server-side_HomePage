@@ -23,8 +23,9 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit(): void {
     let url = window.location.href;
-    if (url.split('/')[3].startsWith('search') || url.split('/')[3].startsWith('#gsc'))
+    if (url.split('/')[3].startsWith('search') || url.split('/')[3].startsWith('#gsc') || url.split('#gsc')[1] != undefined) {
       this.searchForm.setValue({search: url.substring(url.indexOf('q=')+2).replace(/&[A-z=.&0-9]*/,''), languageCode: 'es'});
+    }
   }
 
   paste(event:MouseEvent) {
@@ -54,11 +55,9 @@ export class SearchBarComponent implements OnInit {
   onSubmit() {
     if (this.searchForm.value.search.length === 0) return;
     if (this.engine.name === 'Google') {
-      this.router.navigate(['search'],{ queryParams: { q: this.searchForm.value.search, page: 1, tab: 0}, });
-    
+      location.href = location.href.split('#')[0] + '#gsc.q=' + this.searchForm.value.search;
       setTimeout(() => location.reload());
   
-      console.log(this.route.queryParams)
       // #gsc.tab=0&gsc.q=HOLA&gsc.page=1
     } else {
       let win = window.open(this.engine.url+'?'+this.engine.searchParameter+'='+this.searchForm.value.search, '_blank');

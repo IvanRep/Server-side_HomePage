@@ -18,12 +18,16 @@ export class MainPanelComponent implements OnInit, OnChanges {
   editedLink!:Link
   edit!:boolean
 
+  googleScript:HTMLScriptElement = document.createElement('script');
+
   constructor() {
-    this.panel = 'links';
+    this.panel = 'googleSearch';
+
+    this.googleScript.type = 'text/javascript';
+    this.googleScript.src = 'https://cse.google.com/cse.js?cx=604b402d27db449ed';
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-  }
+  ngOnChanges(changes: SimpleChanges): void {}
 
   ngOnInit(): void {
     this.checkGoogleSearch();
@@ -31,9 +35,13 @@ export class MainPanelComponent implements OnInit, OnChanges {
 
   checkGoogleSearch() {
     let url = window.location.href;
-    if (url.split('/')[3].startsWith('search') || url.split('/')[3].startsWith('#gsc'))
-      this.panel = 'googleSearch'
-    console.log(this.panel)
+    if (!(url.split('/')[3].startsWith('#gsc') || url.split('#gsc')[1] != undefined)) {
+      this.panel = 'links'
+      document.head.removeChild(this.googleScript);
+    } else {
+
+      document.head.appendChild(this.googleScript);
+    }
   }
 
   changePanel(panel:string) {
