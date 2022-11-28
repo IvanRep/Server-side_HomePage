@@ -56,7 +56,8 @@ export class SearchBarComponent implements OnInit {
     if (this.searchForm.value.search.length === 0) return;
     if (this.engine.name === 'Google') {
       location.href = location.href.split('#')[0] + '#gsc.q=' + this.searchForm.value.search;
-      setTimeout(() => location.reload());
+      this.setSearchWindowEmitter.emit('googleSearch');
+      // setTimeout(() => location.reload());
   
       // #gsc.tab=0&gsc.q=HOLA&gsc.page=1
     } else {
