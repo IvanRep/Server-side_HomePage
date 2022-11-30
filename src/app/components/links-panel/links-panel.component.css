@@ -10,8 +10,9 @@ app-link {
 app-compressed-link {
     display: inline-flex;
     flex-direction: row;
-    width: 50%;
-    max-width: 50%;
+    margin: 0px 2.15%;
+    width: 29%;
+    max-width: 33.3%;
     height: max(40px,7%);
     max-height: max(40px,7%);
     margin-top: 2%;
