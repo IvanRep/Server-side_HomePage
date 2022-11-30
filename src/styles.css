@@ -92,3 +92,23 @@ ul#contextMenu li:hover {
 ul#contextMenu li.delete:hover {
     background-color: var(--delete-accent-color);
 }
+
+/* Google Search results */
+
+.gsc-webResult.gsc-result {
+    margin-bottom: 2% !important;
+    border-radius: 10px;
+    box-shadow: 0px -1px 5px 1px var(--light-border-color);
+}
+
+.gs-webResult.gs-result a.gs-title:link, .gs-webResult.gs-result a.gs-title:link b, .gs-imageResult a.gs-title:link, .gs-imageResult a.gs-title:link b {
+    font-weight: bold;
+}
+
+.gsc-imageResult>.gsc-expansionArea {
+    justify-content: space-evenly !important;
+}
+
+.gsc-results .gsc-imageResult {
+    box-shadow: 0px 0px 5px 1px var(--light-border-color);
+}
