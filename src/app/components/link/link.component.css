@@ -40,7 +40,7 @@ button {
     height: 100%;
     aspect-ratio: 1 / 1;
     border-radius: 15vw;
-    padding: .9%;
+    padding: max(7px, .9%);
     border: 2px solid var(--light-border-color);
     margin-left: 1%;
     background-color: var(--main-background-color);
