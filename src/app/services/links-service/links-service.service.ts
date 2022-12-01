@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Link from 'src/app/model/Link.model';
 import Tag from 'src/app/model/Tag.model';
+import User from 'src/app/model/User.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LinksServiceService {
 
-  user = 'local'
+  user:User = new User();
   links:Link[] = [];
   tags:Tag[] = [];
 
@@ -18,8 +19,8 @@ export class LinksServiceService {
 
   constructor(private http:HttpClient) {
 
-    const links = localStorage.getItem(this.user+'Links');
-    const tags = localStorage.getItem(this.user+'Tags');
+    const links = localStorage.getItem(location.href.split('#')[0]+this.user.name+'Links');
+    const tags = localStorage.getItem(location.href.split('#')[0]+this.user.name+'Tags');
     if (links && tags) {
       this.loadData(JSON.parse(links), JSON.parse(tags));
     }
@@ -29,13 +30,13 @@ export class LinksServiceService {
   saveLocalLinks() {
 
     this.sortLinks();
-    localStorage.setItem(this.user+'Links',JSON.stringify(this.links));    
+    localStorage.setItem(location.href.split('#')[0]+this.user.name+'Links',JSON.stringify(this.links));    
   }
 
   saveLocalTags() {
 
     this.sortTags();    
-    localStorage.setItem(this.user+'Tags',JSON.stringify(this.tags));
+    localStorage.setItem(location.href.split('#')[0]+this.user.name+'Tags',JSON.stringify(this.tags));
   }
 
   loadData(links:any, tags:any, reset = false) {
