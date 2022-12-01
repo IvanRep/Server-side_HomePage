@@ -1,19 +1,32 @@
 
 <form method="get" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-    <app-engine-button (engineEmitter)="engine = $event"></app-engine-button>
-    <input (input)="cancelSearch()" (keydown)="newTabSearch($event)" (mousedown)="paste($event)" formControlName="search" [name]="engine.searchParameter" type="search" autofocus tabindex="1" maxlength="255" autocomplete="off" [title]="'Búsqueda en '+ engine.name" [placeholder]="'Búsqueda en '+ engine.name"  #queryInput>
+    <app-engine-button (engineEmitter)="engine = $event" [ngClass]="{'deployed': deployed}"></app-engine-button>
+    <input 
+        (input)="cancelSearch()" 
+        (keydown)="newTabSearch($event)" 
+        (mousedown)="paste($event)" 
+        formControlName="search" 
+        [name]="engine.searchParameter" 
+        type="search" 
+        autofocus tabindex="1" 
+        maxlength="255" 
+        autocomplete="off" 
+        [title]="'Búsqueda en '+ engine.name" 
+        [placeholder]="'Búsqueda en '+ engine.name"  
+        #queryInput
+    >
     <input formControlName="languageCode" type="hidden" name="hl" value="es">
-    <button class="search-button" [type]="'submit'" name="btnG" title="Buscar con Google" tabindex="-1">
-            <app-magnifier></app-magnifier>
+    <button class="search-button" [ngClass]="{'deployed': deployed}" [type]="'submit'" name="btnG" title="Buscar con Google" tabindex="-1" #searchBtn>
+            <div><app-magnifier></app-magnifier></div>
     </button>
-    <!-- <div class="suggestions" [ngClass]="{'deployed':deployed}" #suggestionsRef>
+    <div class="suggestions" [ngClass]="{'deployed':deployed}" #suggestionsRef>
         <ul>
             <li *ngFor="let suggestion of suggestions" (click)="setSuggestion(suggestion)" [value]="suggestion" tabindex="0">
-                <div><img [src]="activeEngineImg" /></div>
+                <div><img [src]="engine.image" /></div>
                 {{suggestion}}
             </li>
         </ul>
-    </div> -->
+    </div>
         
 </form>
 

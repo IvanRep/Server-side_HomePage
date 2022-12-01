@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import SearchEngine from 'src/app/model/SearchEngine.model';
+import { SearchServiceService } from 'src/app/services/search-service/search-service.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -19,7 +20,15 @@ export class SearchBarComponent implements OnInit {
     languageCode: new FormControl('es'),
   })
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  deployed:boolean = false;
+  suggestions:string[] = [];
+
+  @ViewChild('queryInput') queryInput!:ElementRef;
+  @ViewChild('searchBtn') searchBtn!:ElementRef;
+  @ViewChild('suggestionsRef') suggestionsRef!:ElementRef;
+
+
+  constructor(private searchService:SearchServiceService) { }
 
   ngOnInit(): void {
     let url = window.location.href;
@@ -36,6 +45,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   newTabSearch(event:KeyboardEvent) {
+    this.closeSuggestions();
     if (!(event.key === 'Enter')) return;
     
     if (!event.ctrlKey) {
@@ -46,6 +56,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   cancelSearch() {
+    this.showSuggestions();
     if (this.searchForm.value.search.length !== 0) return;
 
     if (location.href.includes('#')) location.href = location.href.split('#')[0] + '#';
@@ -64,5 +75,40 @@ export class SearchBarComponent implements OnInit {
       let win = window.open(this.engine.url+'?'+this.engine.searchParameter+'='+this.searchForm.value.search, '_blank');
     }
   
+  }
+
+
+  showSuggestions() {
+    if (this.closeSuggestions()) return;
+
+    this.searchService.getSearchSuggestions(this.searchForm.value.search).subscribe((data:any) => {
+      this.deployed = true;
+      const suggestionsDiv = (<HTMLDivElement>this.suggestionsRef.nativeElement);
+      const searchBar = (<HTMLInputElement>this.queryInput.nativeElement);
+      const searchButton = (<HTMLInputElement>this.searchBtn.nativeElement);
+
+      suggestionsDiv.style.top = searchBar.getBoundingClientRect().bottom + "px";
+      suggestionsDiv.style.width = searchBar.getBoundingClientRect().width + (searchButton.getBoundingClientRect().width * 2) + "px";
+
+      this.suggestions = data[1];
+      
+    })
+  }
+
+  closeSuggestions() {
+    if (this.searchForm.value.search.length === 0) {
+      this.suggestions = [];
+      this.deployed = false;
+      return true;
+    }
+    return false;
+  }
+
+  setSuggestion(suggestion:string) {
+    const query = (<HTMLInputElement>this.queryInput.nativeElement);
+    this.searchForm.setValue({search: suggestion, languageCode: 'es'});
+    query.focus();
+
+    this.showSuggestions();
   }
 }

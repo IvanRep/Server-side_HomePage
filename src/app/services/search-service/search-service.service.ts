@@ -8,7 +8,7 @@ export class SearchServiceService {
 
   constructor(private http:HttpClient) { }
 
-  getSearchSuggestions(query:string, languageCode:string) {
+  getSearchSuggestions(query:string) {
 
     return this.http.jsonp('http://suggestqueries.google.com/complete/search?client=firefox&q='+query, 'callback');
   }

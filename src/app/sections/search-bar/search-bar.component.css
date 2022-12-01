@@ -33,6 +33,11 @@ app-engine-button {
     overflow: hidden;
 }
 
+app-engine-button.deployed {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 0;
+}
+
 button.search-button {
     min-width: 45px;
     width: 5%;
@@ -45,4 +50,68 @@ button.search-button {
     border-top-right-radius: 15vw;
     border-bottom-right-radius: 15vw;
     padding-right: 1%;
+}
+
+button.search-button div {
+    border-radius: 100%;
+}
+
+button.search-button.deployed {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 0;
+}
+
+/* SUGGESTIONS */
+
+div.suggestions {
+    position: absolute;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 0 10px 20px -4px rgba(0, 0, 0, 0.24);
+    background-color: white;
+    overflow: hidden;
+    z-index: 99;
+    visibility: hidden;
+    
+    opacity: 0;
+}
+div.suggestions.deployed {
+    visibility: visible;
+    opacity: 1;
+}
+
+div.suggestions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+div.suggestions li {
+    display: flex;
+    align-items: center;
+    padding: 1vh;
+    padding-left: 0px;
+    cursor: pointer;
+    position: relative;
+}
+div.suggestions li:hover, div.suggestions li:focus  {
+    background-color: var(--main-accent-color);
+    outline: none;
+}
+div.suggestions li>div {
+    display: flex;
+    place-content: center;
+    width: 5%;
+    min-width: 45px;
+    aspect-ratio: 1 / .5;
+    position: relative;
+}
+div.suggestions li img {
+    visibility: hidden;
+    aspect-ratio: 1 / 1;
+    
+}
+
+div.suggestions li:hover img, div.suggestions li:focus img {
+    visibility: visible;
 }
