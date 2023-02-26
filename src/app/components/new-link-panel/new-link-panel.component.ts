@@ -91,8 +91,8 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
     imgDiv1.title = url+'/favicon.ico';
     img1.style.height = '100%';
     img1.style.width = '100%';
-    img1.onerror = (event) => { imgDiv1.removeChild(img1); return false;};
     imgDiv1.appendChild(img1);
+    img1.onerror = (event) => { imgDiv1.removeChild(img1); return false;};
 
     //Image 2
     const img2 = document.createElement('img');
@@ -100,8 +100,8 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
     imgDiv2.title = 'https://'+url.split('/')[2]+'/favicon.ico';
     img2.style.height = '100%';
     img2.style.width = '100%';
-    img2.onerror = (event) => { imgDiv2.removeChild(img2); return false;};
     imgDiv2.appendChild(img2);
+    img2.onerror = (event) => { imgDiv2.removeChild(img2); return false;};
 
     //Image 3
     const img3 = document.createElement('img');
@@ -109,8 +109,8 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
     imgDiv3.title = 'https://www.google.com/s2/favicons?domain='+url;
     img3.style.height = '100%';
     img3.style.width = '100%';
-    img3.onerror = (event) => { imgDiv3.removeChild(img3); return false;};
     imgDiv3.appendChild(img3);
+    img3.onerror = (event) => { imgDiv3.removeChild(img3); return false;};
 
   }
 
