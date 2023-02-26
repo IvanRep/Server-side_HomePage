@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import Link from 'src/app/model/Link.model';
 import Tag from 'src/app/model/Tag.model';
 import User from 'src/app/model/User.model';
+import settings from 'src/settings.json';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class LinksServiceService {
   links:Link[] = [];
   tags:Tag[] = [];
 
-  //This arrays contains the Tags that have been selected by the user 
+  //This arrays contains the Tags that have been selected by the user
   selectedFilterTags:Tag[] = []; //Filters apllied to links
   selectedNewLinkTags:Tag[] = []; //New Link's Tags
 
@@ -30,12 +31,12 @@ export class LinksServiceService {
   saveLocalLinks() {
 
     this.sortLinks();
-    localStorage.setItem(location.href.split('#')[0]+this.user.name+'Links',JSON.stringify(this.links));    
+    localStorage.setItem(location.href.split('#')[0]+this.user.name+'Links',JSON.stringify(this.links));
   }
 
   saveLocalTags() {
 
-    this.sortTags();    
+    this.sortTags();
     localStorage.setItem(location.href.split('#')[0]+this.user.name+'Tags',JSON.stringify(this.tags));
   }
 
@@ -47,7 +48,7 @@ export class LinksServiceService {
     for (let tag of tags) {
       const currentTag = new Tag(tag.id,tag.name,tag.selectedByDefault,false,false,tag.creationDate);
       if (currentTag.selectedByDefault && !reset) { //If it's not a reset, the tag selected by default is selected
-        currentTag.selected = true; 
+        currentTag.selected = true;
         this.selectedFilterTags.push(currentTag);
       }
       this.tags.push(currentTag);
@@ -90,12 +91,12 @@ export class LinksServiceService {
         if (a.name.toLowerCase().charCodeAt(i) === b.name.toLowerCase().charCodeAt(i)) continue;
 
         if (a.name.toLowerCase().charCodeAt(i) < b.name.toLowerCase().charCodeAt(i)) return -1;
-        
-        if (a.name.toLowerCase().charCodeAt(i) > b.name.toLowerCase().charCodeAt(i)) return 1;  
+
+        if (a.name.toLowerCase().charCodeAt(i) > b.name.toLowerCase().charCodeAt(i)) return 1;
       }
 
       return 0;
-      
+
     });
   }
 
@@ -108,12 +109,12 @@ export class LinksServiceService {
         if (a.name.toLowerCase().charCodeAt(i) === b.name.toLowerCase().charCodeAt(i)) continue;
 
         if (a.name.toLowerCase().charCodeAt(i) < b.name.toLowerCase().charCodeAt(i)) return -1;
-        
-        if (a.name.toLowerCase().charCodeAt(i) > b.name.toLowerCase().charCodeAt(i)) return 1;  
+
+        if (a.name.toLowerCase().charCodeAt(i) > b.name.toLowerCase().charCodeAt(i)) return 1;
       }
 
       return 0;
-      
+
     });
   }
 
