@@ -56,12 +56,10 @@ export class LinksServiceService {
     }
     for (let link of links) {
       let selectedTags = [];
-      for (let linkTag of link.tags) {
-        for (let tag of this.tags) {
-          if (linkTag.name === tag.name) {
-            selectedTags.push(tag);
-            break;
-          }
+      for (let tag of this.tags) {
+        if (link.tags.map((el: Link) => el.name).includes(tag.name)) {
+          selectedTags.push(tag);
+          break;
         }
       }
       this.links.push(new Link(link.id,link.name,link.url,link.imageUrl,selectedTags,link.creationDate))

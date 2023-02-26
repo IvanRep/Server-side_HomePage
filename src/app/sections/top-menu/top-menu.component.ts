@@ -42,7 +42,7 @@ export class TopMenuComponent implements OnInit, ConfirmMenuInterface {
 
     let a = document.createElement('a');
     a.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(json)));
-    a.setAttribute('download', this.linksService.user+'_localsave.json');
+    a.setAttribute('download', this.linksService.user.name+'_localsave.json');
 
     a.style.display = 'none';
     document.body.appendChild(a);
@@ -62,7 +62,7 @@ export class TopMenuComponent implements OnInit, ConfirmMenuInterface {
   mainFunction() {
     this.linksService.links.length = 0;
     this.linksService.tags.length = 0;
-    this.secondaryFunction();  
+    this.secondaryFunction();
   }
 
   secondaryFunction() {
@@ -78,22 +78,22 @@ export class TopMenuComponent implements OnInit, ConfirmMenuInterface {
       console.table(input.files)
       if (input.files && input.files[0].type === 'application/json') {
         input.files[0].text().then( (value) => {
-          
+
           const json = JSON.parse(value);
-         
+
 
           this.linksService.loadData(json.Links,json.Tags);
           this.linksService.saveLocalLinks();
           this.linksService.saveLocalTags();
           //Reload links and tags
           this.reloadEmitter.emit();
-          
+
           const menu = (<HTMLDivElement>document.querySelector('app-confirm-menu'))
           menu.style.visibility = "hidden";
           menu.style.opacity = "0";
         },
         () => {
-          console.log('rejected')
+          console.error('rejected')
         });
       }
     })

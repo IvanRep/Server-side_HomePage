@@ -1,5 +1,5 @@
 <div *ngIf="!link.imageUrl.startsWith('#') else colorLink" class="pointer link" [ngClass]="{ 'hovered' : linkHover }" (mousedown)="onClick($event,link.url)" (mouseenter)="colorHover(true,0)" (mouseleave)="colorHover(false, 0)">
-    <div><img [src]="link.imageUrl" alt="Link logo" /></div>
+    <div><img [src]="link.imageUrl" alt="Logo"  onerror="this.src='assets/not_found.png'" /></div>
     {{link.name}}
 </div>
 <ng-template #colorLink>

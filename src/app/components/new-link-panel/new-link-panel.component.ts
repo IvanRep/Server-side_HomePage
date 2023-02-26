@@ -96,7 +96,6 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
 
     //Image 2
     const img2 = document.createElement('img');
-    console.log('http://'+url.split('/')[2]);
     img2.src = 'https://'+url.split('/')[2]+'/favicon.ico';
     imgDiv2.title = 'https://'+url.split('/')[2]+'/favicon.ico';
     img2.style.height = '100%';
@@ -126,7 +125,7 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
     url.startsWith('http://') || url.startsWith('https://') || url.startsWith('ftp://') || url.startsWith('#')
     ? url = url
     : url = 'http://'+url;
-    
+
     if (url.startsWith('#')) {
       if (url.length > 7 || (url.length>1 && !(url.charAt(url.length-1).match(/[0-9abcdefABCDEF]/)))) {
         (<HTMLInputElement> this.imageInput.nativeElement).value = url.substring(0, url.length-1);
@@ -137,7 +136,7 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
       img.src = url;
       img.style.height = '100%';
       img.style.width = '100%';
-      img.onerror = (event) => { mainImg.removeChild(img); return false;};
+      img.onerror = (event) => { img.src = 'assets/not_found.png'};
       mainImg.appendChild(img);
     }
 
@@ -180,13 +179,13 @@ export class NewLinkPanelComponent implements OnInit, AfterViewInit {
     }
 
     this.linksService.saveLocalLinks() // SAVE LINKS lOCAL
-    
+
     this.exitPanelEmitter.emit('links');
   }
 
   checkIfLinkExists(link:Link, previousLink:Link) {
     for (let value of this.linksService.links) {
-      if (!(value.name === previousLink.name && value.url === previousLink.url) 
+      if (!(value.name === previousLink.name && value.url === previousLink.url)
       && (link.name === value.name || link.url === value.url))
         return true;
     }
