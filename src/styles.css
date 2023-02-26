@@ -26,10 +26,8 @@
 }
 body, app-root {
     overflow-x: hidden;
-    min-height: 100vh;
-    max-height: 100vh;
-    min-width: 100vw;
-    max-width: 100vw;
+    height: 100vh;
+    width: 100vw;
     margin: 0%;
     scroll-behavior: smooth;
 }
@@ -38,13 +36,13 @@ app-root {
     display: grid;
     grid-template-columns: minmax(20px, 2%) minmax(330px, 70%) minmax(120px, 28%);
     grid-template-rows: minmax(40px, 5%) minmax(90px, 15%) minmax(500px, 80%);
-    grid-template-areas: 
+    grid-template-areas:
         "lm tm tm"
         "lm sb ip"
         "lm mp mm"
 }
 
-/* grid-template-areas: 
+/* grid-template-areas:
 "lm tm tm tm tm tm tm tm tm"
 "lm sb sb sb sb sb sb ip ip"
 "lm mp mp mp mp mp mp mm mm"
@@ -86,7 +84,7 @@ ul#contextMenu li.separator {
 
 ul#contextMenu li:hover {
     background-color: var(--main-accent-color);
- 
+
 }
 
 ul#contextMenu li.delete:hover {
